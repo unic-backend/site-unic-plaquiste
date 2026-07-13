@@ -1085,6 +1085,40 @@ html.gsap3d .fade-seq{ opacity:0; }
 
 /* --- Boutons magnetiques (PC uniquement, via JS) --- */
 .btn{ transition:transform .25s cubic-bezier(.22,.9,.24,1), background .25s ease, color .25s ease; will-change:auto; }
+
+/* ================================================
+   CORRECTIF PERFORMANCE
+   ================================================ */
+
+/* --- FIX Google Maps : isoler l'iframe du rendu de la page ---
+   Sans cela, le navigateur recalcule TOUTE la page a chaque frame
+   quand la carte est visible -> le scroll rame. */
+iframe{
+  contain: strict;              /* isole completement le rendu */
+  content-visibility: auto;     /* le navigateur ne le dessine que si visible */
+  will-change: auto;
+}
+.map, .map-wrap, [class*="map"]{
+  contain: layout paint;        /* le conteneur aussi */
+  transform: translateZ(0);     /* calque GPU separe */
+}
+
+/* --- FIX : sections lourdes non dessinees hors ecran ---
+   ATTENTION : on ne l'applique PAS aux sections animees par GSAP
+   (ScrollTrigger ne peut pas mesurer un element non dessine ->
+   les declencheurs seraient mal places). On cible seulement la
+   section carte + zones, qui n'ont pas d'animation 3D. */
+#zones, .map, .map-wrap{
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* --- FIX : supprimer les will-change permanents (12 = GPU sature) --- */
+.hero-bg, .hero-photo, .hero-video, .hero-veil,
+.scroll-progress, .fade-seq, .sec-fade,
+.line-mask > .line-in, .btn{
+  will-change: auto;            /* active dynamiquement par GSAP uniquement */
+}
 </style>
 <script>
 /* Marque tot que la 3D GSAP va prendre la main (evite le conflit avec l'ancien observer) */
@@ -1870,15 +1904,15 @@ html.gsap3d .fade-seq{ opacity:0; }
 
   var lenis = new Lenis({
     /* NOTE : on utilise SOIT duration+easing, SOIT lerp -- jamais les deux. */
-    lerp: isMobile ? 0.09 : 0.06,
+    lerp: isMobile ? 0.12 : 0.06,
     smoothWheel: true,
-    /* MOBILE : syncTouch active le lissage au doigt.
-       Le scroll devient doux et "sensible" comme sur les apps premium.
-       On garde une inertie naturelle pour ne pas donner le mal de mer. */
-    syncTouch: true,
-    syncTouchLerp: 0.08,           /* douceur du suivi du doigt */
-    touchInertiaMultiplier: 32,    /* la page continue de glisser apres le geste */
-    touchMultiplier: 1.6,
+    /* MOBILE : syncTouch etait TROP lourd (il recalcule a chaque pixel du doigt).
+       On le desactive : le doigt garde le scroll natif du telephone (parfaitement
+       fluide car gere par le systeme), et Lenis ne lisse que l'inertie apres.
+       Resultat : doux ET rapide. */
+    syncTouch: false,
+    touchInertiaMultiplier: 28,
+    touchMultiplier: 2,
     wheelMultiplier: 0.9,
     infinite: false,
     autoResize: true
@@ -1932,6 +1966,14 @@ html.gsap3d .fade-seq{ opacity:0; }
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   gsap.registerPlugin(ScrollTrigger);
+
+  /* PERFORMANCE : quand on scrolle vite, GSAP saute les frames intermediaires
+     au lieu d'essayer de toutes les calculer (= rattrapage qui fait ramer). */
+  ScrollTrigger.config({
+    limitCallbacks: true,
+    ignoreMobileResize: true      /* la barre d'URL mobile ne declenche plus de recalcul */
+  });
+  ScrollTrigger.defaults({ fastScrollEnd: true });
 
   var isMobile   = window.matchMedia('(max-width: 768px)').matches;
   var isVerySmall= window.matchMedia('(max-width: 420px)').matches;
@@ -2114,8 +2156,12 @@ html.gsap3d .fade-seq{ opacity:0; }
   /* ============================================================
      3) PARAGRAPHES QUI APPARAISSENT EN CASCADE
      ============================================================ */
+  /* MOBILE : on desactive la cascade des paragraphes.
+     C'est l'effet le moins visible et le plus couteux (29 declencheurs).
+     Sur mobile, moins de declencheurs = scroll fluide. */
   document.querySelectorAll('section').forEach(function(sec){
     if (sec.classList.contains('hero')) return;
+    if (isMobile) return;
     /* IMPORTANT : on exclut les elements deja animes par l'ancien
        systeme (.ro, .reveal-up, .wreveal...) sinon les deux animations
        se superposent et l'element clignote. */
