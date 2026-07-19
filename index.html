@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0C1B33" />
+<meta name="color-scheme" content="only light" />
 <title>Plaquiste à Dakar — Faux plafond BA13 & aménagement | UniC</title>
 <meta name="description" content="Plaquiste à Dakar depuis 2019 : faux plafonds BA13, cloisons, isolation, aménagement et décoration intérieure. Devis gratuit au 77 708 50 92.">
 <meta name="geo.region" content="SN-DK">
@@ -26,8 +28,11 @@
 <meta property="og:url" content="https://www.unicplaquiste.com/" />
 <meta property="og:site_name" content="UniC Plaquiste" />
 <meta property="og:image" content="https://www.unicplaquiste.com/unic-logo.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="UniC Plaquiste — Faux plafonds BA13 et aménagement intérieur à Dakar" />
 <meta property="og:locale" content="fr_FR" />
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 
 <!-- Données structurées : aide Google à comprendre l'entreprise et la relier à la fiche Google -->
@@ -271,6 +276,7 @@
 
 <style>
   :root{
+    color-scheme: only light;
     --bg:        #EFF3FA;   /* bleu très clair */
     --bg-soft:   #E0E8F4;
     --ink:       #0C1B33;   /* bleu nuit presque noir */
@@ -690,7 +696,7 @@
   .field label{ display:block; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px; font-weight:600; }
   .field input, .field textarea, .field select{
     width:100%; padding:14px 16px; border:1px solid var(--line); border-radius:8px;
-    background:var(--bg); font-family:var(--sans); font-size:.95rem; color:var(--ink); transition:border .3s;
+    background:var(--bg); font-family:var(--sans); font-size:1rem; color:var(--ink); transition:border .3s;
   }
   .field input:focus, .field textarea:focus, .field select:focus{ outline:none; border-color:var(--clay); }
   .form .btn{ width:100%; justify-content:center; margin-top:6px; }
@@ -706,7 +712,7 @@
 
   /* ---------- FLOATING DEVIS ---------- */
   .float-cta{
-    position:fixed; bottom:26px; right:26px; z-index:90;
+    position:fixed; bottom:calc(26px + env(safe-area-inset-bottom, 0px)); right:26px; z-index:90;
     display:flex; align-items:center; gap:10px; padding:15px 24px;
     background:#25D366; color:#fff; border-radius:100px; font-weight:600; font-size:.9rem;
     box-shadow:0 18px 40px -12px rgba(37,211,102,.6); transition:transform .35s var(--ease);
@@ -1257,7 +1263,7 @@ iframe{
       <a href="https://app.unicplaquiste.com" class="btn">Espace Client</a>
       <a href="#contact" class="btn">Demander un devis</a>
     </nav>
-    <button class="nav-toggle" aria-label="Menu">
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
     </button>
   </div>
@@ -1313,7 +1319,7 @@ iframe{
       </a>
     </div>
   </nav>
-  <div class="wrap">
+  <div class="wrap" id="main" tabindex="-1">
     <div class="hero-inner">
       <span class="eyebrow reveal-up d1">Artisan plaquiste · Dakar, Sénégal</span>
       <h1 class="reveal-up d2">Nous donnons<br>vie à vos <em>espaces</em></h1>
@@ -1642,7 +1648,7 @@ iframe{
       </div>
     </div>
 
-    <form class='form ro' id='devisForm' method='POST' name='devis'>
+    <form class='form ro' id='devisForm' method='POST' name='devis' data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="devis">
       <p style="display:none"><label>Ne pas remplir : <input name="bot-field"></label></p>
       <h3>Demander un devis gratuit</h3>
@@ -1849,6 +1855,7 @@ iframe{
     function setMenu(open){
       hdr.classList.toggle('menu-open', open);
       toggle.innerHTML = open ? close : burger;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
     }
     toggle.addEventListener('click', () => setMenu(!hdr.classList.contains('menu-open')));
@@ -1863,17 +1870,23 @@ iframe{
     f.addEventListener('submit', function(e){
       e.preventDefault();
       const data = new FormData(f);
-      const nom = (data.get('nom')||'').toString();
+      const nom = (data.get('nom')||'').toString()
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+      const btn = f.querySelector('button[type="submit"]');
+      if(btn){ btn.disabled = true; btn.textContent = 'Envoi en cours…'; }
       fetch('/', {
         method:'POST',
         headers:{'Content-Type':'application/x-www-form-urlencoded'},
         body: new URLSearchParams(data).toString()
-      }).then(function(){
+      }).then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
         f.innerHTML = '<div style="text-align:center;padding:34px 6px">'
           + '<div style="font-size:2.4rem;color:var(--gold)">✓</div>'
           + '<h3 style="margin:10px 0 6px">Merci ' + nom + '&nbsp;!</h3>'
           + '<p class="hint">Votre demande a bien été envoyée. Nous vous recontactons très vite.</p></div>';
       }).catch(function(){
+        if(btn){ btn.disabled = false; btn.textContent = 'Envoyer ma demande'; }
         alert("Une erreur est survenue. Vous pouvez aussi nous écrire sur WhatsApp au +221 77 708 50 92.");
       });
     });
