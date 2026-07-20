@@ -361,7 +361,7 @@
   .btn.ink{ background:var(--ink); border-color:var(--ink); color:var(--cream); }
   .btn.ink:hover{ background:#000; border-color:#000; color:var(--cream); }
 
-  .nav-toggle{ display:none; background:none; border:none; color:var(--cream); cursor:pointer; }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--cream); cursor:pointer; padding:9px; margin:-9px; /* agrandit la zone tactile (~44px) sans déplacer l'icône ni le layout */ }
   header.scrolled .nav-toggle{ color:var(--ink); }
 
   /* ---------- HERO ---------- */
@@ -1183,7 +1183,7 @@ html.gsap3d .fade-seq{ opacity:0; }
 }
 .lb-close:hover{ background:rgba(247,190,18,.25); }
 @media (max-width:640px){
-  .lb-btn{ width:40px; height:40px; }
+  .lb-btn{ width:44px; height:44px; }
   .lb-cap{ padding:0 20px; bottom:18px; }
 }
 
@@ -1274,8 +1274,8 @@ iframe{
 <section class="hero" id="top">
   <div class="hero-bg">
     <div class="hero-photo" style="background-image:url('/images/poster-03.webp')"></div>
+    <!-- À MODIFIER (optionnel) : déposez /images/hero.mp4 puis remettez la ligne <source> ci-dessous pour activer la vidéo de fond sur mobile/tablette -->
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/images/poster-03.webp">
-      <source src="hero.mp4" type="video/mp4">
     </video>
     <div class="hero-veil"></div>
     <div class="glow g1"></div>
@@ -1653,13 +1653,13 @@ iframe{
       <p style="display:none"><label>Ne pas remplir : <input name="bot-field"></label></p>
       <h3>Demander un devis gratuit</h3>
       <p class="hint">Décrivez votre projet, nous revenons vers vous sous 48h.</p>
-      <div class="field"><label>Nom complet</label><input type="text" name="nom" required placeholder="Votre nom"></div>
-      <div class="field"><label>Téléphone</label><input type="tel" name="telephone" required placeholder="+221 ..."></div>
-      <div class="field"><label>E-mail</label><input type="email" name="email" placeholder="votre@email.com (facultatif)"></div>
-      <div class="field"><label>Type de projet</label>
-        <select name="type_projet"><option>Pose de placo</option><option>Faux plafond</option><option>Décoration intérieure</option><option>Peinture</option><option>Rénovation complète</option><option>Autre</option></select>
+      <div class="field"><label for="devis-nom">Nom complet</label><input id="devis-nom" type="text" name="nom" required placeholder="Votre nom"></div>
+      <div class="field"><label for="devis-telephone">Téléphone</label><input id="devis-telephone" type="tel" name="telephone" required placeholder="+221 ..."></div>
+      <div class="field"><label for="devis-email">E-mail</label><input id="devis-email" type="email" name="email" placeholder="votre@email.com (facultatif)"></div>
+      <div class="field"><label for="devis-type">Type de projet</label>
+        <select id="devis-type" name="type_projet"><option>Pose de placo</option><option>Faux plafond</option><option>Décoration intérieure</option><option>Peinture</option><option>Rénovation complète</option><option>Autre</option></select>
       </div>
-      <div class="field"><label>Votre message</label><textarea name="message" rows="4" required placeholder="Décrivez votre projet..."></textarea></div>
+      <div class="field"><label for="devis-message">Votre message</label><textarea id="devis-message" name="message" rows="4" required placeholder="Décrivez votre projet..."></textarea></div>
       <button class="btn" type="submit">Envoyer ma demande</button>
     </form>
   </div>
@@ -1703,8 +1703,8 @@ iframe{
 
 <!-- ============ FLOATING DEVIS / WHATSAPP ============ -->
 <!-- À MODIFIER : remplacez le lien par votre numéro WhatsApp : https://wa.me/221XXXXXXXX -->
-<a href="https://wa.me/221777085092" class="float-cta" target="_blank" rel="noopener">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+<a href="https://wa.me/221777085092" class="float-cta" target="_blank" rel="noopener" aria-label="Demander un devis sur WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>
   <span>Demander un devis</span>
 </a>
 
@@ -1856,6 +1856,7 @@ iframe{
       hdr.classList.toggle('menu-open', open);
       toggle.innerHTML = open ? close : burger;
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Menu');
       document.body.style.overflow = open ? 'hidden' : '';
     }
     toggle.addEventListener('click', () => setMenu(!hdr.classList.contains('menu-open')));
