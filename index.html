@@ -272,6 +272,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/images/poster-03.webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -1047,6 +1048,14 @@ html.gsap3d .svc-3d{
   transform-style:preserve-3d;
   backface-visibility:hidden;
 }
+/* ANTI-TREMBLEMENT : l'image INTERNE des cartes est stabilisee pendant la rotation 3D.
+   Sans ceci, la photo peut scintiller au sous-pixel a l'instant ou le scroll s'arrete. */
+html.gsap3d .gal-3d .ph,
+html.gsap3d .cmp-3d .ph,
+html.gsap3d .svc-3d .ph{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
 
 /* Lueur doree qui accompagne la rotation (touche premium) */
 .gal{ position:relative; }
@@ -1123,6 +1132,16 @@ html.gsap3d .fade-seq{ opacity:0; }
 }
 .faq-item[open] summary::after{ transform:translateY(-50%) rotate(45deg); }
 .faq-item p{ padding:0 22px 20px; margin:0; color:var(--ink-soft); line-height:1.65; }
+/* Ouverture/fermeture FLUIDE de la FAQ (CSS moderne).
+   Navigateurs récents : glissement doux. Anciens : ouverture instantanée (comme avant). */
+@media (prefers-reduced-motion: no-preference){
+  .faq-item{ interpolate-size: allow-keywords; }
+  .faq-item::details-content{
+    opacity:0; block-size:0; overflow-y:clip;
+    transition: content-visibility .38s allow-discrete, opacity .38s ease, block-size .38s ease;
+  }
+  .faq-item[open]::details-content{ opacity:1; block-size:auto; }
+}
 
 /* ================================================
    ETAPE 6 - GALERIE PLEIN ECRAN + FINITIONS
@@ -1251,7 +1270,7 @@ iframe{
   <div class="wrap nav">
     <a href="#top" class="logo">
       
-      <img class="logo-img" src="/images/logo-02.webp" alt="UniC Plaquiste — plaquiste et faux plafonds à Dakar">
+      <img class="logo-img" src="/images/logo-02.webp" decoding="async" alt="UniC Plaquiste — plaquiste et faux plafonds à Dakar">
       <span class="logo-txt"><b>UniC Plaquiste</b><span>Rénovation & Décoration</span></span>
     </a>
     <nav class="nav-links">
@@ -1750,6 +1769,13 @@ iframe{
       const el = e.target;
       const target = +el.dataset.count;
       const suffix = el.dataset.suffix || '';
+      /* Si GSAP est chargé, c'est LUI qui anime (voir plus bas) : on se retire
+         pour éviter que 2 animations écrivent le même chiffre en même temps. */
+      if(window.gsap && window.ScrollTrigger){ cio.unobserve(el); return; }
+      /* Accessibilité : mouvement réduit -> valeur finale immédiate */
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        el.textContent = target + suffix; cio.unobserve(el); return;
+      }
       let cur = 0;
       const step = Math.max(1, Math.ceil(target/60));
       const t = setInterval(() => {
@@ -1958,8 +1984,8 @@ iframe{
     ticking = false;
     var sy = window.scrollY || window.pageYOffset;
 
-    /* Barre de progression dorée */
-    if(bar){
+    /* Barre de progression dorée (seulement si GSAP ne la pilote pas déjà) */
+    if(bar && !(window.gsap && window.ScrollTrigger)){
       var dh = document.documentElement.scrollHeight - window.innerHeight;
       bar.style.transform = 'scaleX(' + (dh > 0 ? sy / dh : 0) + ')';
     }
@@ -2325,11 +2351,12 @@ iframe{
      ============================================================ */
   document.querySelectorAll('[data-count]').forEach(function(el){
     var target = parseFloat(el.dataset.count || el.textContent) || 0;
+    var suffix = el.dataset.suffix || '';
     var obj = { v: 0 };
     gsap.to(obj, {
       v: target, duration: 1.6, ease: "power2.out",
       scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
-      onUpdate: function(){ el.textContent = Math.round(obj.v).toLocaleString('fr-FR'); }
+      onUpdate: function(){ el.textContent = Math.round(obj.v).toLocaleString('fr-FR') + suffix; }
     });
   });
 
