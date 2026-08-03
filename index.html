@@ -274,6 +274,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="image" href="/images/poster-03.webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -375,7 +376,6 @@
   }
   .hero-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; }
   .hero-photo{ position:absolute; inset:0; background-position:center; background-size:cover; }
-  .hero-video{ display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
   .hero-veil{ position:absolute; inset:0; background:linear-gradient(110deg,rgba(9,22,51,.94) 0%,rgba(9,22,51,.82) 42%,rgba(9,22,51,.5) 100%); }
   .hero-bg .glow{
     position:absolute; border-radius:50%; filter:blur(90px); opacity:.5;
@@ -540,10 +540,6 @@
     display:grid; place-items:center; color:var(--ink-soft);
     border:1px solid var(--line);
   }
-  .ph .tag{
-    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; text-align:center;
-    padding:10px 14px; opacity:.75;
-  }
   .ph::after{ /* texture diagonale */
     content:""; position:absolute; inset:0; opacity:.5;
     background:repeating-linear-gradient(45deg,transparent,transparent 16px,rgba(27,83,166,.05) 16px,rgba(27,83,166,.05) 17px);
@@ -610,13 +606,11 @@
     width:50px; height:50px; border-radius:50%; background:var(--cream); display:grid; place-items:center;
     box-shadow:0 6px 20px rgba(0,0,0,.35); color:var(--ink);
   }
-  .compare .ph-note{ font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.85; text-align:center; padding:0 20px; }
-
   /* ---------- GALLERY ---------- */
   .gallery{ background:var(--bg-soft); }
   .gal-grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; grid-auto-rows:200px; }
   .gal{ position:relative; border-radius:6px; overflow:hidden; }
-  .gal .ph{ position:absolute; inset:0; border:none; transition:transform .8s var(--ease); }
+  .gal .ph{ position:absolute; inset:0; border:none; }
   .gal:hover .ph{ transform:scale(1.06); }
   .gal .cap{
     position:absolute; left:0; right:0; bottom:0; padding:22px; z-index:2;
@@ -709,7 +703,7 @@
   footer{ background:var(--espresso); color:rgba(244,239,230,.7); padding:80px 0 36px; }
   .foot-top{ display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:50px; padding-bottom:50px; border-bottom:1px solid rgba(244,239,230,.12); }
   .foot-top .logo{ color:var(--cream); margin-bottom:20px; }
-  .foot-col h4{ font-family:var(--sans); font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+  .foot-col h3{ font-family:var(--sans); font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
   .foot-col a{ display:block; padding:7px 0; font-size:.92rem; transition:color .3s; }
   .foot-col a:hover{ color:var(--cream); }
   .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:30px; flex-wrap:wrap; gap:14px; font-size:.82rem; }
@@ -735,7 +729,6 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:980px){
-    .hero-video{ display:block; }
     .hero-veil{ background:linear-gradient(110deg,rgba(9,22,51,.72) 0%,rgba(9,22,51,.58) 42%,rgba(9,22,51,.35) 100%); }
     .nav-toggle{ display:block; z-index:120; }
     header.menu-open .nav-toggle{ color:var(--cream); }
@@ -907,8 +900,10 @@
   /* ===== FINITIONS FLUIDITÉ & MODERNITÉ ===== */
 
   /* 1. Hints GPU : les éléments animés au scroll restent sur le compositeur
-        → zéro saccade, surtout sur téléphones modestes */
-  .hero-photo, .hero-video, .scroll-progress, .marquee-track, .gal .ph{ will-change:transform; }
+        → zéro saccade, surtout sur téléphones modestes
+        (hero-photo/scroll-progress ne sont plus listés ici : le correctif
+        performance plus bas les remet à "auto" en permanence de toute façon) */
+  .marquee-track, .gal .ph{ will-change:transform; }
 
   /* 2. Typographie moderne : titres équilibrés, paragraphes sans mot orphelin */
   h1,h2,h3{ text-wrap:balance; }
@@ -935,7 +930,6 @@
   }
 
   /* 6. Photos galerie : zoom + légère montée de lumière, courbe plus élégante */
-  .gal .ph{ transition:transform .8s var(--ease), filter .8s var(--ease); }
   .gal:hover .ph{ filter:brightness(1.06) saturate(1.04); }
 
 
@@ -1091,34 +1085,27 @@ html.gsap3d .svc-3d .ph{
 
 /* --- Revelation de titre par lignes (effet signature) --- */
 .line-mask{ display:block; overflow:hidden; }
-.line-mask > .line-in{ display:block; will-change:transform, opacity; }
-
-/* --- Parallaxe hero : la couche bouge moins vite que le scroll --- */
-.hero-bg{ will-change:transform; }
-.hero-photo, .hero-video{ will-change:transform; }
-
-/* --- Voile qui s'assombrit progressivement au scroll --- */
-.hero-veil{ will-change:opacity; }
+.line-mask > .line-in{ display:block; }
 
 /* --- Barre de progression du scroll (synchronisee avec Lenis) --- */
-.scroll-progress{ will-change:transform; transform-origin:0 50%; }
+.scroll-progress{ transform-origin:0 50%; }
 
 /* --- Apparition en cascade des paragraphes --- */
-.fade-seq{ opacity:0; transform:translateY(22px); will-change:transform,opacity; }
+.fade-seq{ opacity:0; transform:translateY(22px); }
 html.gsap3d .fade-seq{ opacity:0; }
 
-/* --- Sections : leger fondu d'ensemble a l'entree --- */
-.sec-fade{ will-change:opacity, transform; }
+/* Note : will-change n'est plus déclaré en permanence ici (voir le
+   correctif performance plus bas qui le remet à "auto" et le laisse
+   GSAP l'activer dynamiquement pendant l'animation seulement). */
 
 /* --- Accessibilite : tout est neutralise si l'utilisateur le demande --- */
 @media (prefers-reduced-motion: reduce){
   .fade-seq{ opacity:1 !important; transform:none !important; }
   .line-mask > .line-in{ transform:none !important; opacity:1 !important; }
-  .hero-bg, .hero-photo, .hero-video{ transform:none !important; }
+  .hero-bg, .hero-photo{ transform:none !important; }
 }
 
 /* ===== FAQ ===== */
-.faq{ padding:90px 0; }
 .faq-list{ max-width:760px; }
 .faq-item{
   border:1px solid var(--line); border-radius:12px;
@@ -1212,7 +1199,7 @@ html.gsap3d .fade-seq{ opacity:0; }
 }
 
 /* --- Boutons magnetiques (PC uniquement, via JS) --- */
-.btn{ transition:transform .25s cubic-bezier(.22,.9,.24,1), background .25s ease, color .25s ease; will-change:auto; }
+.btn{ transition:transform .25s cubic-bezier(.22,.9,.24,1), background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease; will-change:auto; }
 
 /* ================================================
    CORRECTIF PERFORMANCE
@@ -1242,7 +1229,7 @@ iframe{
 }
 
 /* --- FIX : supprimer les will-change permanents (12 = GPU sature) --- */
-.hero-bg, .hero-photo, .hero-video, .hero-veil,
+.hero-bg, .hero-photo, .hero-veil,
 .scroll-progress, .fade-seq, .sec-fade,
 .line-mask > .line-in, .btn{
   will-change: auto;            /* active dynamiquement par GSAP uniquement */
@@ -1689,20 +1676,20 @@ iframe{
         <p style="max-width:340px;font-size:.92rem">Artisan plaquiste à Dakar. Rénovation, décoration et finitions intérieures avec 8 ans de savoir-faire.</p>
       </div>
       <div class="foot-col">
-        <h4>Navigation</h4>
+        <h3>Navigation</h3>
         <a href="#about">À propos</a>
         <a href="#services">Services</a>
         <a href="#realisations">Réalisations</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="foot-col">
-        <h4>Contact</h4>
+        <h3>Contact</h3>
         <a href="tel:+221777085092">+221 77 708 50 92</a>
         <a href="mailto:Unicplaquiste@gmail.com">Unicplaquiste@gmail.com</a>
         <a href="https://maps.app.goo.gl/TN2j6RFHxGLigf5S8" target="_blank" rel="noopener">Gueule Tapée, Rue 59 × 62 — Dakar</a>
       </div>
       <div class="foot-col">
-        <h4>Informations légales</h4>
+        <h3>Informations légales</h3>
         <span style="display:block; padding:7px 0; font-size:.92rem">📄 Entreprise : UniC Plaquiste</span>
         <span style="display:block; padding:7px 0; font-size:.92rem">📄 NINEA : 013141677</span>
         <span style="display:block; padding:7px 0; font-size:.92rem">📄 RCCM : SN.DKR.2026.A.22010</span>
@@ -1883,6 +1870,9 @@ iframe{
     toggle.addEventListener('click', () => setMenu(!hdr.classList.contains('menu-open')));
     backdrop.addEventListener('click', () => setMenu(false));
     links.forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && hdr.classList.contains('menu-open')) setMenu(false);
+    });
   })();
 
   /* Envoi du formulaire de devis (Netlify Forms) */
@@ -1950,7 +1940,6 @@ iframe{
   var bar = document.querySelector('.scroll-progress');
   var hero = document.querySelector('.hero');
   var heroBg = document.querySelector('.hero-photo');
-  var heroVid = document.querySelector('.hero-video');
 
   /* Découper le titre en mots pour l'effet d'allumage */
   var wr = document.querySelector('.wreveal');
@@ -1991,7 +1980,6 @@ iframe{
       var p = Math.min(1, Math.max(0, sy / (hero.offsetHeight || 1)));
       var sc = 'scale(' + (1 + p * 0.08) + ')';
       if(heroBg) heroBg.style.transform = sc;
-      if(heroVid) heroVid.style.transform = sc;
     }
 
     /* Mots qui s'allument progressivement */
