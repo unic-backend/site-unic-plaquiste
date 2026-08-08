@@ -12,8 +12,7 @@
 <meta name="geo.placename" content="Dakar, Sénégal">
 <meta name="geo.position" content="14.687;-17.455">
 <meta name="ICBM" content="14.687, -17.455">
- 
-<meta name="keywords" content="plaquiste Dakar, faux plafond Dakar, placo BA13 Dakar, cloison sèche, doublage, isolation Dakar, staff et corniches, aménagement intérieur Dakar, décoration intérieure Sénégal, rénovation intérieure Dakar, plâtrerie Dakar, second œuvre bâtiment, plaquiste Sénégal, UniC Plaquiste" />
+
 <link rel="canonical" href="https://www.unicplaquiste.com/" />
 
 <!-- Favicon : logo UniC dans l'onglet du navigateur -->
@@ -33,6 +32,9 @@
 <meta property="og:image:alt" content="UniC Plaquiste — Faux plafonds BA13 et aménagement intérieur à Dakar" />
 <meta property="og:locale" content="fr_FR" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="UniC Plaquiste — Plaquiste & faux plafonds à Dakar" />
+<meta name="twitter:description" content="Faux plafonds, placo BA13, cloisons, peinture et décoration à Dakar. Devis gratuit. 8 ans d'expérience." />
+<meta name="twitter:image" content="https://www.unicplaquiste.com/unic-logo.jpg" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 
 <!-- Données structurées : aide Google à comprendre l'entreprise et la relier à la fiche Google -->
@@ -462,6 +464,7 @@
   .sec-head{ max-width:640px; margin-bottom:64px; }
   .sec-head h2{ font-size:clamp(2.2rem,4.6vw,3.6rem); margin-top:18px; }
   .sec-head p{ color:var(--ink-soft); font-size:1.05rem; margin-top:18px; }
+  .h2-inline{ font-size:clamp(2rem,3.8vw,3rem); margin:16px 0 30px; }
 
   /* reveal on scroll */
   .ro{ opacity:0; transform:translateY(34px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
@@ -761,6 +764,7 @@
   @media(max-width:560px){
     .wrap{ padding:0 20px; }
     section{ padding:80px 0; }
+    .about-media .badge{ bottom:-14px; left:0; padding:18px 22px; }
     .float-cta span{ display:none; }
     .float-cta{ padding:16px; }
   }
@@ -774,7 +778,8 @@
   }
   .ba-count{ font-size:.9rem; letter-spacing:.08em; color:var(--ink-soft); min-width:46px; text-align:center; }
   .ba-btn{
-    padding:10px 20px; border:1px solid var(--clay); border-radius:6px;
+    padding:10px 20px; min-height:44px; display:inline-flex; align-items:center; justify-content:center;
+    border:1px solid var(--clay); border-radius:6px;
     background:transparent; color:var(--clay); font-size:.85rem; font-weight:600;
     letter-spacing:.04em; cursor:pointer; transition:all .25s ease; font-family:var(--sans);
   }
@@ -1243,13 +1248,6 @@ iframe{
   will-change: auto;            /* active dynamiquement par GSAP uniquement */
 }
 </style>
-<script>
-/* Marque tot que la 3D GSAP va prendre la main (evite le conflit avec l'ancien observer) */
-(function(){
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    }
-})();
-</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Quel est le prix d'un faux plafond BA13 à Dakar ?","acceptedAnswer":{"@type":"Answer","text":"Le prix dépend de la surface, du type de plafond et de l'état du chantier. Devis gratuit et détaillé après visite ou sur plans. Contact : 77 708 50 92."}},
@@ -1261,6 +1259,7 @@ iframe{
 ]}</script>
 </head>
 <body>
+<noscript><style>.reveal-up, .wreveal .w { opacity: 1 !important; transform: none !important; }</style></noscript>
 <a href="#main" class="skip-link">Aller au contenu</a>
 
 <div class="scroll-progress" aria-hidden="true"></div>
@@ -1270,7 +1269,7 @@ iframe{
   <div class="wrap nav">
     <a href="#top" class="logo">
       
-      <img class="logo-img" src="/images/logo-02.webp" decoding="async" alt="UniC Plaquiste — plaquiste et faux plafonds à Dakar">
+      <img class="logo-img" src="/images/logo-02.webp" width="48" height="48" decoding="async" alt="UniC Plaquiste — plaquiste et faux plafonds à Dakar">
       <span class="logo-txt"><b>UniC Plaquiste</b><span>Rénovation & Décoration</span></span>
     </a>
     <nav class="nav-links">
@@ -1293,9 +1292,6 @@ iframe{
 <section class="hero" id="top">
   <div class="hero-bg">
     <div class="hero-photo" style="background-image:url('/images/poster-03.webp')"></div>
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/images/poster-03.webp">
-      <source src="hero.mp4" type="video/mp4">
-    </video>
     <div class="hero-veil"></div>
     <div class="glow g1"></div>
     <div class="glow g2"></div>
@@ -1376,7 +1372,7 @@ iframe{
 <section class="about" id="about" tabindex="-1">
   <div class="wrap">
     <div class="about-media ro-left">
-      <div class="ph" data-bg="/images/galerie-04.webp" style="background-size:cover;background-position:center"></div>
+      <div class="ph" data-bg="/images/galerie-04.webp" style="background-size:cover;background-position:center" role="img" aria-label="Équipe UniC Plaquiste au travail sur un chantier à Dakar"></div>
       <div class="badge"><b>08</b><span>années d'expertise</span></div>
     </div>
     <div class="about-text ro-right">
@@ -1499,12 +1495,12 @@ iframe{
     </div>
     <!-- 📷 PHOTOS : remplacez chaque bloc .ph par une vraie photo de chantier -->
     <div class="gal-grid">
-      <div class="gal g-a ro-3d"><div class="ph" data-bg="/images/galerie-15.webp" style="background-size:cover;background-position:center"></div><div class="cap"><b>Séjour & plafond décaissé</b><span>Faux plafond avec retombée lumineuse</span></div></div>
-      <div class="gal g-b ro-3d"><div class="ph" data-bg="/images/galerie-16.webp" style="background-size:cover;background-position:center"></div><div class="cap"><b>Plafond linéaire</b><span>Éclairage LED indirect</span></div></div>
-      <div class="gal g-c ro-3d"><div class="ph" data-bg="/images/galerie-17.webp" style="background-size:cover;background-position:center"></div><div class="cap"><b>Doublage de séjour</b><span>Cloisons & plafond, Dakar</span></div></div>
-      <div class="gal g-d ro-3d"><div class="ph" data-bg="/images/galerie-18.webp" style="background-size:cover;background-position:center"></div><div class="cap"><b>Mur décoratif</b><span>Relief sur-mesure en plâtre</span></div></div>
-      <div class="gal g-e ro-3d"><div class="ph" data-bg="/images/galerie-19.webp" style="background-size:cover;background-position:center"></div><div class="cap"><b>Plafond à spots</b><span>Faux plafond suspendu</span></div></div>
-      <div class="gal g-f ro-3d"><div class="ph" data-bg="/images/galerie-20.webp" style="background-size:cover;background-position:center"></div><div class="cap"><b>Mur d'accent en relief</b><span>Décoration murale design</span></div></div>
+      <div class="gal g-a ro-3d"><div class="ph" data-bg="/images/galerie-15.webp" style="background-size:cover;background-position:center" role="img" aria-label="Séjour & plafond décaissé : faux plafond avec retombée lumineuse"></div><div class="cap"><b>Séjour & plafond décaissé</b><span>Faux plafond avec retombée lumineuse</span></div></div>
+      <div class="gal g-b ro-3d"><div class="ph" data-bg="/images/galerie-16.webp" style="background-size:cover;background-position:center" role="img" aria-label="Plafond linéaire : éclairage LED indirect"></div><div class="cap"><b>Plafond linéaire</b><span>Éclairage LED indirect</span></div></div>
+      <div class="gal g-c ro-3d"><div class="ph" data-bg="/images/galerie-17.webp" style="background-size:cover;background-position:center" role="img" aria-label="Doublage de séjour : cloisons & plafond, Dakar"></div><div class="cap"><b>Doublage de séjour</b><span>Cloisons & plafond, Dakar</span></div></div>
+      <div class="gal g-d ro-3d"><div class="ph" data-bg="/images/galerie-18.webp" style="background-size:cover;background-position:center" role="img" aria-label="Mur décoratif : relief sur-mesure en plâtre"></div><div class="cap"><b>Mur décoratif</b><span>Relief sur-mesure en plâtre</span></div></div>
+      <div class="gal g-e ro-3d"><div class="ph" data-bg="/images/galerie-19.webp" style="background-size:cover;background-position:center" role="img" aria-label="Plafond à spots : faux plafond suspendu"></div><div class="cap"><b>Plafond à spots</b><span>Faux plafond suspendu</span></div></div>
+      <div class="gal g-f ro-3d"><div class="ph" data-bg="/images/galerie-20.webp" style="background-size:cover;background-position:center" role="img" aria-label="Mur d'accent en relief : décoration murale design"></div><div class="cap"><b>Mur d'accent en relief</b><span>Décoration murale design</span></div></div>
     </div>
   </div>
 </section>
@@ -1514,7 +1510,7 @@ iframe{
   <div class="wrap">
     <div class="ro">
       <span class="eyebrow">Où nous intervenons</span>
-      <h2 style="font-size:clamp(2rem,3.8vw,3rem);margin:16px 0 30px">Zones desservies</h2>
+      <h2 class="h2-inline">Zones desservies</h2>
       <div class="zone-list">
         <div class="zone"><div><b>Dakar & banlieue</b><span style="display:block">Almadies, Ouakam, Ngor, Yoff, Plateau, Mermoz, Sacré-Cœur, Point E, Fann, Médina, Parcelles, Pikine, Guédiawaye, Rufisque, Diamniadio</span></div><div class="dot"></div></div>
         <div class="zone"><div><b>Tout le Sénégal</b><span style="display:block">Sur devis selon le projet</span></div><div class="dot"></div></div>
@@ -1618,7 +1614,7 @@ iframe{
 <section class="faq" id="faq">
   <div class="wrap">
     <span class="eyebrow">Questions fréquentes</span>
-    <h2 style="font-size:clamp(2rem,3.8vw,3rem);margin:16px 0 30px">Vos questions, nos réponses</h2>
+    <h2 class="h2-inline">Vos questions, nos réponses</h2>
     <div class="faq-list">
       <details class="faq-item">
         <summary>Quel est le prix d'un faux plafond BA13 à Dakar ?</summary>
@@ -1652,7 +1648,7 @@ iframe{
   <div class="wrap">
     <div class="contact-info ro">
       <span class="eyebrow">Contact</span>
-      <h2 style="font-size:clamp(2rem,3.8vw,3rem);margin:16px 0 30px">Parlons de votre projet</h2>
+      <h2 class="h2-inline">Parlons de votre projet</h2>
       <!-- À MODIFIER : vos vraies coordonnées -->
       <div class="row"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><b>Téléphone</b><a href="tel:+221777085092">+221 77 708 50 92</a></div></div>
       <div class="row"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20z"/></svg></div><div><b>WhatsApp</b><a href="https://wa.me/221777085092" target="_blank" rel="noopener">+221 77 708 50 92</a></div></div>
@@ -1672,13 +1668,13 @@ iframe{
       <p style="display:none"><label>Ne pas remplir : <input name="bot-field"></label></p>
       <h3>Demander un devis gratuit</h3>
       <p class="hint">Décrivez votre projet, nous revenons vers vous sous 48h.</p>
-      <div class="field"><label>Nom complet</label><input type="text" name="nom" required placeholder="Votre nom"></div>
-      <div class="field"><label>Téléphone</label><input type="tel" name="telephone" required placeholder="+221 ..."></div>
-      <div class="field"><label>E-mail</label><input type="email" name="email" placeholder="votre@email.com (facultatif)"></div>
-      <div class="field"><label>Type de projet</label>
-        <select name="type_projet"><option>Pose de placo</option><option>Faux plafond</option><option>Décoration intérieure</option><option>Peinture</option><option>Rénovation complète</option><option>Autre</option></select>
+      <div class="field"><label for="devis-nom">Nom complet</label><input id="devis-nom" type="text" name="nom" required placeholder="Votre nom"></div>
+      <div class="field"><label for="devis-tel">Téléphone</label><input id="devis-tel" type="tel" name="telephone" required placeholder="+221 ..."></div>
+      <div class="field"><label for="devis-email">E-mail</label><input id="devis-email" type="email" name="email" placeholder="votre@email.com (facultatif)"></div>
+      <div class="field"><label for="devis-type">Type de projet</label>
+        <select id="devis-type" name="type_projet"><option>Pose de placo</option><option>Faux plafond</option><option>Décoration intérieure</option><option>Peinture</option><option>Rénovation complète</option><option>Autre</option></select>
       </div>
-      <div class="field"><label>Votre message</label><textarea name="message" rows="4" required placeholder="Décrivez votre projet..."></textarea></div>
+      <div class="field"><label for="devis-message">Votre message</label><textarea id="devis-message" name="message" rows="4" required placeholder="Décrivez votre projet..."></textarea></div>
       <button class="btn" type="submit">Envoyer ma demande</button>
     </form>
   </div>
@@ -1689,7 +1685,7 @@ iframe{
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <div class="logo"><img class="logo-img" loading="lazy" decoding="async" src="/images/logo-02.webp" alt="Logo UniC Plaquiste"><span class="logo-txt"><b>UniC Plaquiste</b><span>Rénovation & Décoration</span></span></div>
+        <div class="logo"><img class="logo-img" loading="lazy" decoding="async" src="/images/logo-02.webp" width="48" height="48" alt="Logo UniC Plaquiste"><span class="logo-txt"><b>UniC Plaquiste</b><span>Rénovation & Décoration</span></span></div>
         <p style="max-width:340px;font-size:.92rem">Artisan plaquiste à Dakar. Rénovation, décoration et finitions intérieures avec 8 ans de savoir-faire.</p>
       </div>
       <div class="foot-col">
