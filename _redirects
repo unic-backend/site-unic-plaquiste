@@ -1,0 +1,10 @@
+# Redirections SEO — une seule adresse canonique : https://www.unicplaquiste.com/
+# Syntaxe Netlify : https://docs.netlify.com/routing/redirects/
+
+# 1) Le sous-domaine technique Netlify sert actuellement une copie complète du site
+#    en HTTP 200. On le renvoie vers le domaine officiel pour éviter le contenu dupliqué.
+https://unicplaquiste.netlify.app/*   https://www.unicplaquiste.com/:splat   301!
+
+# 2) /index.html est un doublon exact de la racine "/". Le "!" est obligatoire :
+#    sans lui, le fichier statique existant prendrait le pas sur la règle.
+/index.html   /   301!
