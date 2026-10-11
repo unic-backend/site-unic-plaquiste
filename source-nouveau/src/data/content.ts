@@ -4,6 +4,7 @@ const img = (n: string) => `${BASE}/images/${n}.webp`;
 export const IMAGES = {
   logo: img("logo-unic-512"),
   hero: img("poster-03"),
+  heroBg: img("service-07"),
   about1: img("service-10"),
   about2: img("galerie-19"),
   before1: img("avantapres-11"),
@@ -27,6 +28,7 @@ export const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/unic_plaquiste" },
   { name: "TikTok", href: "https://www.tiktok.com/@unic_plaquiste" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/uthman-diop-ba7325214" },
+  { name: "Reddit", href: "https://www.reddit.com/u/Iceman_mubarak/" },
 ];
 
 export const STATS = [

@@ -1,6 +1,7 @@
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { LogoEmblem, SenegalFlag } from "./Logo";
-import { NINEA, PHONE, PHONE_LINK, RCCM, SOCIALS, WHATSAPP } from "../data/content";
+import { SocialLinks } from "./SocialIcons";
+import { NINEA, PHONE, PHONE_LINK, RCCM, WHATSAPP } from "../data/content";
 
 export default function Footer() {
   return (
@@ -44,13 +45,8 @@ export default function Footer() {
             Depuis 8 ans, nous façonnons les intérieurs de Dakar : placo, faux plafonds,
             cloisons, isolation et finitions. L'exigence d'un artisan.
           </p>
-          <div className="mt-5 flex gap-2.5">
-            {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} target="_blank" rel="noreferrer" aria-label={s.name}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 font-condensed text-[13px] font-extrabold uppercase tracking-wider text-white/70 transition hover:border-gold-500 hover:bg-gold-500 hover:text-royal-950">
-                {s.name.slice(0, 2)}
-              </a>
-            ))}
+          <div className="mt-5 flex flex-wrap gap-2.5">
+            <SocialLinks boxClass="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/75 transition hover:border-gold-500/60 hover:bg-gold-500/15 hover:text-gold-300" iconClass="h-5 w-5" />
           </div>
         </div>
 

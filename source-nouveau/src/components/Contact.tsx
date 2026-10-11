@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { ADDRESS, EMAIL, MAPS, PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
 import { Reveal } from "./Reveal";
+import { SocialLinks } from "./SocialIcons";
 import { SenegalFlag } from "./Logo";
 
 const INFOS = [
@@ -62,6 +63,10 @@ export default function Contact() {
                   </a>
                 </Reveal>
               ))}
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              <SocialLinks boxClass="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 transition hover:border-gold-500/60 hover:text-gold-300" iconClass="h-5 w-5" />
             </div>
 
             {/* map */}

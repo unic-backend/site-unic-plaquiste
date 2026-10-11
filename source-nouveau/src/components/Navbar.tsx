@@ -2,14 +2,9 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MapPin, Menu, Phone, X } from "lucide-react";
 
-const FacebookIcon = (props: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={props.className}><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H7.5v3H10v7h3.5z" /></svg>
-);
-const InstagramIcon = (props: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={props.className}><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none" /></svg>
-);
 import { LogoLockup, SenegalFlag } from "./Logo";
-import { PHONE, PHONE_LINK, WHATSAPP, SOCIALS } from "../data/content";
+import { PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
+import { SocialLinks } from "./SocialIcons";
 
 const LINKS = [
   { label: "Accueil", href: "#accueil" },
@@ -49,8 +44,7 @@ export default function Navbar() {
             </a>
             <span className="h-4 w-px bg-white/15" />
             <div className="flex items-center gap-3 text-white/80">
-              <a href={SOCIALS[0].href} target="_blank" rel="noreferrer" aria-label="Facebook" className="transition hover:text-gold-400"><FacebookIcon className="h-4 w-4" /></a>
-              <a href={SOCIALS[1].href} target="_blank" rel="noreferrer" aria-label="Instagram" className="transition hover:text-gold-400"><InstagramIcon className="h-4 w-4" /></a>
+              <SocialLinks boxClass="transition hover:text-gold-400" iconClass="h-4 w-4" />
               <SenegalFlag className="h-3.5 w-5" />
             </div>
           </div>

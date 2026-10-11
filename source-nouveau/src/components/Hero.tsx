@@ -16,6 +16,9 @@ export default function Hero() {
   return (
     <section id="accueil" className="bg-royal-deep noise relative overflow-hidden pt-[84px] lg:pt-[112px]">
       {/* backdrop décor */}
+      {/* photo de fond sombre */}
+      <img src={IMAGES.heroBg} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover object-top opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-royal-950/75 via-royal-950/40 to-royal-950/90" />
       <div className="blueprint-grid absolute inset-0" />
       <div className="absolute -left-40 top-20 h-[480px] w-[480px] rounded-full bg-royal-500/25 blur-[120px]" />
       <div className="absolute -right-32 bottom-0 h-[420px] w-[420px] rounded-full bg-gold-500/15 blur-[120px]" />
@@ -29,12 +32,12 @@ export default function Hero() {
         {/* ------- left ------- */}
         <div>
           <motion.div variants={fadeUp} initial="hidden" animate="show" custom={0}
-            className="inline-flex flex-wrap items-center gap-2 rounded-full border border-gold-500/30 bg-white/5 py-1.5 pl-1.5 pr-4 backdrop-blur">
+            className="inline-flex max-w-full items-center gap-2 rounded-full border border-gold-500/30 bg-white/5 py-1.5 pl-1.5 pr-4 backdrop-blur">
             <span className="bg-gold-gloss flex items-center gap-1 rounded-full px-3 py-1 font-condensed text-[13px] font-extrabold uppercase tracking-widest text-royal-950">
               <Star className="h-3.5 w-3.5 fill-royal-950" /> 8 ans
             </span>
-            <span className="font-condensed text-[13px] font-bold uppercase tracking-[0.18em] text-white/90">
-              Artisan plaquiste · Dakar, Sénégal
+            <span className="whitespace-nowrap font-condensed text-[12px] font-bold uppercase tracking-[0.12em] text-white/90 sm:text-[13px] sm:tracking-[0.18em]">
+              Plaquiste · Dakar, Sénégal
             </span>
           </motion.div>
 
