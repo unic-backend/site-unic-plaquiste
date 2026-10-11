@@ -7,6 +7,9 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Process from "./components/Process";
 import QuoteCalculator from "./components/QuoteCalculator";
+import BeforeAfter from "./components/BeforeAfter";
+import Zones from "./components/Zones";
+import TrustReviews from "./components/TrustReviews";
 import Testimonials from "./components/Testimonials";
 import Faq from "./components/Faq";
 import Contact from "./components/Contact";
@@ -23,10 +26,13 @@ export default function App() {
         <Marquee />
         <Services />
         <About />
+        <BeforeAfter />
         <Projects />
         <Process />
         <QuoteCalculator />
+        <Zones />
         <Testimonials />
+        <TrustReviews />
         <Faq />
         <Contact />
       </main>

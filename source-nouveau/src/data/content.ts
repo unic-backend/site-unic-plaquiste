@@ -92,3 +92,10 @@ export const OPTIONS = [
   { id: "peinture", label: "Peinture lessivable", desc: "2 couches (par m²)", price: 2500 },
   { id: "isolation", label: "Isolation phonique", desc: "Laine de verre (par m²)", price: 4000 },
 ];
+
+export const MAPS_REVIEWS = "https://maps.app.goo.gl/HUsim6vFbBGPtddR7";
+export const MAPS_ROUTE = "https://maps.app.goo.gl/TN2j6RFHxGLigf5S8";
+export const BEFORE_AFTER = [
+  { after: img("avantapres-11"), before: img("avantapres-12"), alt: "Mur et plafond avant et après la pose de placo" },
+  { after: img("avantapres-13"), before: img("avantapres-14"), alt: "Mur décoratif en plâtre avant et après finitions" },
+];

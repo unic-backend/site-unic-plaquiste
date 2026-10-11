@@ -1,9 +1,12 @@
+import { useState } from "react";
+import { LegalDialog, type LegalKind } from "./Legal";
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { LogoEmblem, SenegalFlag } from "./Logo";
 import { SocialLinks } from "./SocialIcons";
-import { NINEA, PHONE, PHONE_LINK, RCCM, WHATSAPP } from "../data/content";
+import { APP_URL, NINEA, PHONE, PHONE_LINK, RCCM, WHATSAPP } from "../data/content";
 
 export default function Footer() {
+  const [legal, setLegal] = useState<LegalKind | null>(null);
   return (
     <footer className="bg-[#01041f] relative overflow-hidden text-white">
       {/* gold top line */}
@@ -80,11 +83,16 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-[13.5px] font-medium text-white/45 sm:flex-row sm:px-6">
-          <p>© 2026 Unic Plaquiste — Tous droits réservés. Fait avec exigence à Dakar <SenegalFlag className="ml-1 inline-block h-3 w-4.5 align-[-1px]" /></p>
-          <div className="flex gap-5">
-            </div>
+          <p>© 2026 UniC Plaquiste — Tous droits réservés. Fait avec exigence à Dakar <SenegalFlag className="ml-1 inline-block h-3 w-4.5 align-[-1px]" /></p>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <button onClick={() => setLegal("mentions")} className="transition hover:text-gold-300">Mentions légales</button>
+            <button onClick={() => setLegal("confidentialite")} className="transition hover:text-gold-300">Confidentialité</button>
+            <button onClick={() => setLegal("estimation")} className="transition hover:text-gold-300">Conditions de l'estimation</button>
+            <a href={APP_URL} target="_blank" rel="noreferrer" className="transition hover:text-gold-300">Espace client</a>
+          </div>
         </div>
       </div>
+    <LegalDialog kind={legal} onClose={() => setLegal(null)} />
     </footer>
   );
 }

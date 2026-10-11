@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MapPin, Menu, Phone, X } from "lucide-react";
 
 import { LogoLockup, SenegalFlag } from "./Logo";
-import { PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
+import { APP_URL, PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
 import { SocialLinks } from "./SocialIcons";
 
 const LINKS = [
@@ -42,6 +42,7 @@ export default function Navbar() {
             <a href={PHONE_LINK} className="flex items-center gap-1.5 font-bold text-gold-400 hover:text-gold-300">
               <Phone className="h-3.5 w-3.5" /> {PHONE}
             </a>
+            <a href={APP_URL} target="_blank" rel="noreferrer" className="font-bold text-white/90 hover:text-gold-300">Espace client</a>
             <span className="h-4 w-px bg-white/15" />
             <div className="flex items-center gap-3 text-white/80">
               <SocialLinks boxClass="transition hover:text-gold-400" iconClass="h-4 w-4" />
