@@ -153,3 +153,7 @@ export const HERO_SLIDES = [
   { src: img("hero-07"), alt: "Cuisine ouverte et plafond", label: "CUISINE & PLAFOND" },
   { src: img("hero-08"), alt: "Plafond de cuisine à lignes LED croisées", label: "PLAFOND À LIGNES LED" },
 ];
+
+// MARQUES DE MATÉRIAUX (bandeau jaune) : noms en texte simple, sans logo (les logos sont des marques déposées).
+// À compléter avec la liste exacte des marques que le patron utilise réellement.
+export const BRANDS = ["Saint-Gobain", "Siniat"];

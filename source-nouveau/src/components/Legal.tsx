@@ -29,6 +29,8 @@ function Body({ kind }: { kind: LegalKind }): ReactNode {
         <p>Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.</p>
         <h3>Propriété intellectuelle</h3>
         <p>Les textes, photographies, logos et éléments graphiques de ce site appartiennent à UniC Plaquiste. Toute reproduction sans autorisation écrite est interdite.</p>
+        <h3>Marques citées</h3>
+        <p>Les noms de marques de matériaux cités sur ce site (par exemple Saint-Gobain, Siniat) appartiennent à leurs propriétaires respectifs. Leur citation sert à indiquer les matériaux posés et n'implique aucun partenariat ni parrainage.</p>
         <h3>Responsabilité</h3>
         <p>Les informations de ce site sont données à titre indicatif. Seul un devis écrit, établi après visite ou étude des plans, engage UniC Plaquiste. Les liens vers des sites tiers (Google, WhatsApp, réseaux sociaux) n'engagent pas notre responsabilité.</p>
         <h3>Droit applicable</h3>
