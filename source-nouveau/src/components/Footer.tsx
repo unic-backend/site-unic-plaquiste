@@ -65,7 +65,7 @@ export default function Footer() {
         <div>
           <p className="font-condensed text-[14px] font-extrabold uppercase tracking-[0.24em] text-gold-400">Navigation</p>
           <ul className="mt-4 space-y-2.5 text-[15px] font-medium text-white/70">
-            {[["Accueil", "#accueil"], ["Réalisations", "#realisations"], ["Méthode", "#methode"], ["Estimation", "#devis"], ["Avis clients", "#avis"], ["Contact", "#contact"]].map(([l, h]) => (
+            {[["Accueil", "#accueil"], ["Réalisations", "#realisations"], ["Méthode", "#methode"], ["Devis", "#devis"], ["Avis clients", "#avis"], ["Contact", "#contact"]].map(([l, h]) => (
               <li key={l}><a href={h} className="transition hover:text-gold-300">{l}</a></li>
             ))}
           </ul>
@@ -87,7 +87,7 @@ export default function Footer() {
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <button onClick={() => setLegal("mentions")} className="transition hover:text-gold-300">Mentions légales</button>
             <button onClick={() => setLegal("confidentialite")} className="transition hover:text-gold-300">Confidentialité</button>
-            <button onClick={() => setLegal("estimation")} className="transition hover:text-gold-300">Conditions de l'estimation</button>
+            <button onClick={() => setLegal("estimation")} className="transition hover:text-gold-300">Conditions de la demande de devis</button>
             <a href={APP_URL} target="_blank" rel="noreferrer" className="transition hover:text-gold-300">Espace client</a>
           </div>
         </div>

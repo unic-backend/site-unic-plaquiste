@@ -78,19 +78,28 @@ export const FAQS = [
   { q: "Posez-vous des cloisons et de l'isolation ?", a: "Oui. Nous montons les cloisons sèches et doublages en plaques de plâtre BA13 et posons l'isolation thermique et acoustique (laine de verre) pour améliorer le confort et l'insonorisation de vos pièces." },
 ];
 
-// PRIX INDICATIFS DU CALCULATEUR (FCFA) : à confirmer par le patron avant mise en ligne.
-// Un seul endroit à modifier : le calculateur se met à jour tout seul.
-export const TYPES = [
-  { id: "plafond", label: "Faux plafond placo", price: 8500 },
-  { id: "pvc", label: "Plafond PVC", price: 6500 },
-  { id: "cloison", label: "Cloison placo", price: 12000 },
-  { id: "staff", label: "Staff & corniches", price: 9500 },
+// DEMANDE DE DEVIS : aucun prix affiché (le prix dépend du chantier). Les listes se modifient ici.
+export const WORK_TYPES = [
+  { id: "ba13", label: "Faux plafond BA13" },
+  { id: "cloison", label: "Cloisons placo" },
+  { id: "pvc", label: "Plafond PVC" },
+  { id: "staff", label: "Staff & corniches" },
+  { id: "doublage", label: "Doublage de murs" },
+  { id: "peinture", label: "Peinture & enduits" },
+  { id: "isolation", label: "Isolation" },
+  { id: "decor", label: "Mur décoratif en relief" },
+  { id: "renov", label: "Rénovation complète" },
 ];
-export const OPTIONS = [
-  { id: "led", label: "Gorge + ruban LED", desc: "Éclairage indirect (par m²)", price: 3500 },
-  { id: "spots", label: "Spots encastrés (x6)", desc: "Par tranche de 25 m²", price: 45000 },
-  { id: "peinture", label: "Peinture lessivable", desc: "2 couches (par m²)", price: 2500 },
-  { id: "isolation", label: "Isolation phonique", desc: "Laine de verre (par m²)", price: 4000 },
+export const QUOTE_OPTIONS = [
+  { id: "isolation", label: "Isolation", desc: "Thermique et acoustique" },
+  { id: "peinture", label: "Peinture", desc: "Finition murs et plafonds" },
+  { id: "enduit", label: "Enduit & lissage", desc: "Surfaces prêtes à peindre" },
+  { id: "moulure", label: "Moulures & corniches", desc: "Décors en plâtre" },
+  { id: "tv", label: "Meuble TV", desc: "Habillage mural pour télévision" },
+  { id: "relief", label: "Mur décoratif en relief", desc: "Plâtre sur-mesure" },
+  { id: "niche", label: "Niches décoratives", desc: "Rangement et mise en valeur" },
+  { id: "trappe", label: "Trappe de visite", desc: "Accès discret aux installations" },
+  { id: "depose", label: "Dépose de l'existant", desc: "Démontage avant les travaux" },
 ];
 
 export const MAPS_REVIEWS = "https://maps.app.goo.gl/HUsim6vFbBGPtddR7";

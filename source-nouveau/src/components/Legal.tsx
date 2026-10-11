@@ -7,7 +7,7 @@ export type LegalKind = "mentions" | "confidentialite" | "estimation";
 const TITLES: Record<LegalKind, string> = {
   mentions: "Mentions légales",
   confidentialite: "Confidentialité et données personnelles",
-  estimation: "Estimation en ligne : conditions",
+  estimation: "Demande de devis en ligne : conditions",
 };
 
 function Body({ kind }: { kind: LegalKind }): ReactNode {
@@ -40,7 +40,7 @@ function Body({ kind }: { kind: LegalKind }): ReactNode {
     return (
       <>
         <h3>Quelles données ?</h3>
-        <p>Si vous remplissez le formulaire de devis : votre nom, votre téléphone, le type de projet et votre message. Si vous nous écrivez par e-mail, téléphone ou WhatsApp : les informations que vous nous communiquez.</p>
+        <p>Si vous remplissez le formulaire de devis : votre nom (facultatif), votre quartier ou ville, le type de travaux, la surface, les options et vos préférences. Si vous nous écrivez par e-mail, téléphone ou WhatsApp : les informations que vous nous communiquez.</p>
         <h3>Comment sont-elles utilisées ?</h3>
         <p>Uniquement pour répondre à votre demande, établir votre devis et suivre le chantier. Nous ne vendons ni ne cédons vos données.</p>
         <h3>Le formulaire de ce site</h3>
@@ -54,10 +54,10 @@ function Body({ kind }: { kind: LegalKind }): ReactNode {
   }
   return (
     <>
-      <h3>Une estimation, pas un devis</h3>
-      <p>Le calculateur donne un ordre de grandeur à partir de prix indicatifs par m². Il n'a aucune valeur contractuelle et ne remplace pas un devis.</p>
-      <h3>Ce qui peut changer le prix</h3>
-      <p>L'état du chantier, l'accès, la hauteur, la complexité des formes, les matériaux et les finitions choisis.</p>
+      <h3>Une demande, pas un devis</h3>
+      <p>Le formulaire de demande de devis sert à décrire votre projet (travaux, surface, options, préférences). Il n'affiche aucun prix et n'engage ni vous ni UniC Plaquiste.</p>
+      <h3>Comment ça marche</h3>
+      <p>Votre demande s'ouvre dans WhatsApp, prête à être envoyée par vous. Rien n'est enregistré sur ce site. Vous pouvez y ajouter photos et plans.</p>
       <h3>Le devis définitif</h3>
       <p>Il est gratuit et sans engagement, établi après visite ou étude des plans. Contactez-nous au {PHONE}.</p>
     </>

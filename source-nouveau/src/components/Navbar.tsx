@@ -11,7 +11,7 @@ const LINKS = [
   { label: "Services", href: "#services" },
   { label: "Réalisations", href: "#realisations" },
   { label: "Méthode", href: "#methode" },
-  { label: "Estimation", href: "#devis" },
+  { label: "Devis", href: "#devis" },
   { label: "Avis", href: "#avis" },
   { label: "Contact", href: "#contact" },
 ];
