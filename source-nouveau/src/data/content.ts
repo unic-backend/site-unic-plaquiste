@@ -4,7 +4,7 @@ const img = (n: string) => `${BASE}/images/${n}.webp`;
 export const IMAGES = {
   logo: img("logo-unic-512"),
   hero: img("poster-03"),
-  heroBg: img("service-07"),
+  heroBg: img("hero-salon-arches"),
   about1: img("service-10"),
   about2: img("galerie-19"),
   before1: img("avantapres-11"),

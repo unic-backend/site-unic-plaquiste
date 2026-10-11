@@ -27,7 +27,7 @@ export function LogoEmblem({ size = 200, className = "" }: { size?: number; clas
 /** Compact navbar lockup */
 export function LogoLockup({ compact = false }: { compact?: boolean }) {
   return (
-    <a href="#accueil" className="group flex items-center gap-3">
+    <a href="#accueil" className="group flex shrink-0 items-center gap-3 whitespace-nowrap">
       <img src={IMAGES.logo} alt="Logo UniC Plaquiste" width={48} height={48} className="h-12 w-12 rounded-2xl shadow-lg transition-transform duration-300 group-hover:rotate-[-4deg] group-hover:scale-105" />
       <span className="flex flex-col leading-none">
         <span className="font-display text-[21px] tracking-wide text-royal-950">

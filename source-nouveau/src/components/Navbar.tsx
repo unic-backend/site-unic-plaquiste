@@ -59,22 +59,22 @@ export default function Navbar() {
             : "bg-white shadow-sm"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <LogoLockup />
 
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-1 xl:flex">
             {LINKS.map((l) => (
               <a
                 key={l.label}
                 href={l.href}
                 onClick={() => setActive(l.label)}
-                className={`relative rounded-full px-4 py-2 font-condensed text-[15px] font-bold uppercase tracking-[0.12em] transition ${
+                className={`relative whitespace-nowrap rounded-full px-2 py-2 font-condensed text-[14px] font-bold uppercase tracking-[0.08em] transition 2xl:px-4 2xl:text-[15px] 2xl:tracking-[0.12em] ${
                   active === l.label ? "text-royal-800" : "text-slate-600 hover:text-royal-800"
                 }`}
               >
                 {l.label}
                 <span
-                  className={`absolute inset-x-4 -bottom-0.5 h-[3px] rounded-full bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 transition-all duration-300 ${
+                  className={`absolute inset-x-2 -bottom-0.5 2xl:inset-x-4 h-[3px] rounded-full bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 transition-all duration-300 ${
                     active === l.label ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"
                   }`}
                 />
@@ -82,12 +82,12 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 xl:flex">
             <a
               href={WHATSAPP}
               target="_blank"
               rel="noreferrer"
-              className="bg-gold-gloss group relative overflow-hidden rounded-full px-6 py-3 font-condensed text-[15px] font-extrabold uppercase tracking-[0.12em] text-royal-950 shadow-[0_10px_28px_-8px_rgba(255,196,0,.7)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-8px_rgba(255,196,0,.8)]"
+              className="bg-gold-gloss group relative overflow-hidden whitespace-nowrap rounded-full px-5 py-3 2xl:px-6 font-condensed text-[15px] font-extrabold uppercase tracking-[0.12em] text-royal-950 shadow-[0_10px_28px_-8px_rgba(255,196,0,.7)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-8px_rgba(255,196,0,.8)]"
             >
               <span className="relative z-10">Devis gratuit</span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -96,7 +96,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(!open)}
-            className="flex h-11 w-11 items-center justify-center rounded-xl bg-royal-950 text-white lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl bg-royal-950 text-white xl:hidden"
             aria-label="Menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -112,7 +112,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="bg-royal-deep mx-3 rounded-2xl border border-white/10 p-4 shadow-2xl lg:hidden"
+            className="bg-royal-deep mx-3 rounded-2xl border border-white/10 p-4 shadow-2xl xl:hidden"
           >
             <div className="grid gap-1">
               {LINKS.map((l, i) => (
