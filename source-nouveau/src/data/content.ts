@@ -99,3 +99,11 @@ export const BEFORE_AFTER = [
   { after: img("avantapres-11"), before: img("avantapres-12"), alt: "Mur et plafond avant et après la pose de placo" },
   { after: img("avantapres-13"), before: img("avantapres-14"), alt: "Mur décoratif en plâtre avant et après finitions" },
 ];
+
+// GRANDES RÉFÉRENCES : noms donnés par le patron. Pour ajouter une photo : mettre son chemin dans `img`
+// (ex. img("ref-stade-abdoulaye-wade")) après l'avoir déposée dans /images. Sans photo : carte « nuit » élégante.
+export const REFERENCES: { name: string; tag: string; img: string | null }[] = [
+  { name: "Stade Abdoulaye Wade", tag: "Grand projet", img: null },
+  { name: "UAM", tag: "Grand projet", img: null },
+  { name: "Centre équestre (CED)", tag: "Grand projet", img: null },
+];

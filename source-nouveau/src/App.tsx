@@ -8,6 +8,7 @@ import Projects from "./components/Projects";
 import Process from "./components/Process";
 import QuoteCalculator from "./components/QuoteCalculator";
 import BeforeAfter from "./components/BeforeAfter";
+import References from "./components/References";
 import Zones from "./components/Zones";
 import TrustReviews from "./components/TrustReviews";
 import Testimonials from "./components/Testimonials";
@@ -28,6 +29,7 @@ export default function App() {
         <About />
         <BeforeAfter />
         <Projects />
+        <References />
         <Process />
         <QuoteCalculator />
         <Zones />
