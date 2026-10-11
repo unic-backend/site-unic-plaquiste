@@ -186,3 +186,14 @@ input[type="range"]::-moz-range-thumb {
 ::-webkit-scrollbar-track { background: #eef1ff; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #0a24a8, #02083a); border-radius: 8px; border: 2px solid #eef1ff; }
 ::-webkit-scrollbar-thumb:hover { background: #e0a800; }
+
+/* Fluidité sur écran tactile : on supprime les effets les plus coûteux à dessiner (bruit SVG, gros flous,
+   flou d'arrière-plan, animations infinies décoratives). Le rendu reste le même, en plus léger. */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .noise::after { display: none; }
+  [class*="blur-["] { display: none !important; }
+  [class*="backdrop-blur"] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .animate-floaty, .animate-floaty-slow, .animate-pulse-gold, .animate-spin-slow, .animate-pulse { animation: none !important; }
+  .shine-sweep::before { animation: none !important; }
+  html { scroll-behavior: auto; }
+}

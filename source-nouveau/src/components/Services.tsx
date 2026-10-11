@@ -30,9 +30,7 @@ export default function Services() {
             return (
               <motion.article
                 key={s.title}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                initial={false}
                 transition={{ delay: (i % 3) * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className={`group relative w-[82vw] max-w-[360px] shrink-0 snap-center overflow-hidden rounded-3xl p-[2px] sm:w-auto sm:max-w-none transition-transform duration-300 hover:-translate-y-2 ${
                   featured
