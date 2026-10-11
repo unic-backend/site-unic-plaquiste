@@ -103,8 +103,16 @@ export const BEFORE_AFTER = [
 // GRANDES RÉFÉRENCES : noms et photos donnés par le patron.
 // `cover` = photo du site (le grand projet). `photos` = photos de NOS réalisations sur ce site : on les ajoute ici
 // (ex. img("ref-stade-01")) après les avoir déposées dans /images ; elles apparaissent en glissant vers la gauche.
-export const REFERENCES: { name: string; tag: string; cover: string | null; photos: string[]; soon?: boolean }[] = [
-  { name: "Stade Abdoulaye Wade", tag: "Grand projet", cover: img("ref-stade-abdoulaye-wade"), photos: [] },
+export const REFERENCES: { name: string; tag: string; cover: string | null; photos: { src: string; portrait?: boolean }[]; soon?: boolean }[] = [
+  {
+    name: "Stade Abdoulaye Wade", tag: "Grand projet", cover: img("ref-stade-abdoulaye-wade"),
+    photos: [
+      { src: img("ref-stade-03") },   // hall fini : colonnes jaunes et lignes de lumière
+      { src: img("ref-stade-01") },   // cloisons placo et colonnes
+      { src: img("ref-stade-02"), portrait: true },   // joints en cours
+      { src: img("ref-stade-04") },   // l'équipe UniC sur le chantier
+    ],
+  },
   { name: "Dakar Arena", tag: "Grand projet", cover: img("ref-dakar-arena"), photos: [] },
   { name: "Université Amadou Mahtar Mbow (UAM)", tag: "Grand projet", cover: img("ref-uam"), photos: [] },
   { name: "Centre équestre de Diamniadio (CED)", tag: "À venir", cover: null, photos: [], soon: true },

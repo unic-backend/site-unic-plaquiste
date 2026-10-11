@@ -5,13 +5,15 @@ import { Reveal, SectionHead } from "./Reveal";
 
 type Ref = (typeof REFERENCES)[number];
 
-const SLIDE = "relative aspect-[16/10] w-[86vw] max-w-[620px] shrink-0 snap-center overflow-hidden rounded-3xl border border-white/10 bg-royal-950 shadow-xl sm:w-[560px]";
+const SLIDE = "relative h-[210px] shrink-0 snap-center overflow-hidden rounded-3xl border border-white/10 bg-royal-950 shadow-xl sm:h-[340px]";
+const LAND = "aspect-[16/10]";
+const PORT = "aspect-[3/4]";
 
 /** Une référence = sa propre section : la photo du site en premier, puis nos réalisations en glissant vers la gauche. */
 function Block({ r }: { r: Ref }) {
   const track = useRef<HTMLDivElement>(null);
   const slides = r.photos.length;
-  const slide = (d: number) => track.current?.scrollBy({ left: d * Math.min(580, track.current.clientWidth * 0.85), behavior: "smooth" });
+  const slide = (d: number) => track.current?.scrollBy({ left: d * Math.min(560, track.current.clientWidth * 0.85), behavior: "smooth" });
   return (
     <div className="mt-14 first:mt-12">
       <Reveal instant className="mb-5 flex flex-wrap items-center gap-3">
@@ -26,7 +28,7 @@ function Block({ r }: { r: Ref }) {
           </>
         )}
         <div ref={track} className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-4 pb-3 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
-          <figure className={SLIDE}>
+          <figure className={`${SLIDE} ${LAND}`}>
             {r.cover ? (
               <img src={r.cover} alt={r.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[65%_50%]" />
             ) : (
@@ -37,8 +39,8 @@ function Block({ r }: { r: Ref }) {
             <div className="absolute inset-0 bg-gradient-to-t from-royal-950/70 via-transparent to-transparent" />
           </figure>
           {r.photos.map((p, k) => (
-            <figure key={p} className={SLIDE}>
-              <img src={p} alt={`${r.name} — réalisation UniC ${k + 1}`} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <figure key={p.src} className={`${SLIDE} ${p.portrait ? PORT : LAND}`}>
+              <img src={p.src} alt={`${r.name} — réalisation UniC ${k + 1}`} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
             </figure>
           ))}
         </div>
