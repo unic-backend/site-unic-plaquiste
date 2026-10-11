@@ -3,7 +3,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Maximize2 } from "lucide
 import { PROJECTS, WHATSAPP } from "../data/content";
 import { SectionHead } from "./Reveal";
 
-const FILTERS = ["Tous", "Plafonds", "Cloisons", "Décoration"];
+const FILTERS = ["Tous", ...Array.from(new Set(PROJECTS.map((p) => p.cat)))];
 
 export default function Projects() {
   return PROJECTS.length === 0 ? null : <ProjectsGallery />;   // aucune photo : la section n'apparaît pas
@@ -29,7 +29,7 @@ function ProjectsGallery() {
           dark
           eyebrow="Nos réalisations"
           title={<>Des chantiers qui parlent <span className="text-gold-3d">d'eux-mêmes.</span></>}
-          desc="Quelques projets qui parlent pour nous : faux plafonds, cloisons et décoration murale réalisés à Dakar."
+          desc="Faux plafonds, cloisons et décoration murale : un aperçu de notre savoir-faire. Les photos marquées « Exemple » illustrent un style possible."
         />
 
         {/* filters */}
@@ -59,8 +59,8 @@ function ProjectsGallery() {
                 <div className="absolute inset-0 bg-gradient-to-t from-royal-950 via-royal-950/20 to-transparent opacity-90" />
                 {/* top badges */}
                 <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                  <span className="bg-gold-gloss rounded-full px-3.5 py-1 font-condensed text-[12px] font-extrabold uppercase tracking-[0.16em] text-royal-950">
-                    {p.cat}
+                  <span className={`rounded-full px-3.5 py-1 font-condensed text-[12px] font-extrabold uppercase tracking-[0.16em] ${p.exemple ? "bg-white/90 text-royal-950" : "bg-gold-gloss text-royal-950"}`}>
+                    {p.exemple ? "Exemple" : p.cat}
                   </span>
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white opacity-0 backdrop-blur transition group-hover:opacity-100">
                     <Maximize2 className="h-4.5 w-4.5" />

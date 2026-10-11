@@ -47,10 +47,17 @@ export const SERVICES = [
   { icon: "home", title: "Rénovation complète", desc: "Accompagnement de A à Z pour transformer entièrement votre intérieur.", img: img("service-07"), tags: ["Clé en main", "Villas", "Bureaux"] },
 ];
 
-// RÉALISATIONS : vide pour l'instant (le patron envoie une photo par type : plafond, cloison, décoration).
-// Pour ajouter une photo : { img: img("nom-du-fichier"), title: "…", loc: "…", cat: "Plafonds" }.
-// Tant que la liste est vide, la section est masquée et les liens pointent vers les grandes références.
-export const PROJECTS: { img: string; title: string; loc: string; cat: string }[] = [];
+// RÉALISATIONS : une photo par type, choisies par le patron. `exemple: true` = image d'exemple / de rendu (pas un chantier UniC) :
+// elle porte l'étiquette « Exemple » pour ne jamais être présentée comme une réalisation de l'entreprise.
+export const PROJECTS: { img: string; title: string; loc: string; cat: string; exemple?: boolean }[] = [
+  { img: img("realis-01-plafond"), title: "Faux plafond", loc: "Plaques de plâtre et spots encastrés", cat: "Plafonds" },
+  { img: img("realis-02-cloisons"), title: "Cloisons", loc: "Cloison en plaques de plâtre", cat: "Cloisons" },
+  { img: img("realis-03-plafond-pvc"), title: "Plafond PVC", loc: "Plafond à lames et éclairage encastré", cat: "Plafonds", exemple: true },
+  { img: img("realis-04-bureau"), title: "Bureau moderne", loc: "Aménagement et habillage de bureau", cat: "Décoration", exemple: true },
+  { img: img("realis-05-deco-murale"), title: "Décoration murale", loc: "Niches arrondies éclairées", cat: "Décoration" },
+  { img: img("realis-06-papier-peint"), title: "Papier peint", loc: "Revêtement mural texturé", cat: "Décoration" },
+  { img: img("realis-07-habillage-mural"), title: "Habillage mural", loc: "Panneaux muraux modernes", cat: "Décoration" },
+];
 export const REAL_ANCHOR = PROJECTS.length > 0 ? "#realisations" : "#references";
 
 export const ZONES = [
