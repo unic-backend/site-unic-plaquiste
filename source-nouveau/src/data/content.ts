@@ -47,14 +47,11 @@ export const SERVICES = [
   { icon: "home", title: "Rénovation complète", desc: "Accompagnement de A à Z pour transformer entièrement votre intérieur.", img: img("service-07"), tags: ["Clé en main", "Villas", "Bureaux"] },
 ];
 
-export const PROJECTS = [
-  { img: img("galerie-15"), title: "Séjour & plafond décaissé", loc: "Faux plafond avec retombée lumineuse", cat: "Plafonds" },
-  { img: img("galerie-16"), title: "Plafond linéaire", loc: "Éclairage LED indirect", cat: "Plafonds" },
-  { img: img("galerie-17"), title: "Doublage de séjour", loc: "Cloisons & plafond, Dakar", cat: "Cloisons" },
-  { img: img("galerie-18"), title: "Mur décoratif", loc: "Relief sur-mesure en plâtre", cat: "Décoration" },
-  { img: img("galerie-19"), title: "Plafond à spots", loc: "Faux plafond suspendu", cat: "Plafonds" },
-  { img: img("galerie-20"), title: "Mur d'accent en relief", loc: "Décoration murale design", cat: "Décoration" },
-];
+// RÉALISATIONS : vide pour l'instant (le patron envoie une photo par type : plafond, cloison, décoration).
+// Pour ajouter une photo : { img: img("nom-du-fichier"), title: "…", loc: "…", cat: "Plafonds" }.
+// Tant que la liste est vide, la section est masquée et les liens pointent vers les grandes références.
+export const PROJECTS: { img: string; title: string; loc: string; cat: string }[] = [];
+export const REAL_ANCHOR = PROJECTS.length > 0 ? "#realisations" : "#references";
 
 export const ZONES = [
   { title: "Dakar & banlieue", text: "Almadies, Ouakam, Ngor, Yoff, Plateau, Mermoz, Sacré-Cœur, Point E, Fann, Médina, Parcelles, Pikine, Guédiawaye, Rufisque, Diamniadio" },

@@ -3,13 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MapPin, Menu, Phone, X } from "lucide-react";
 
 import { LogoLockup, SenegalFlag } from "./Logo";
-import { APP_URL, PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
+import { REAL_ANCHOR, APP_URL, PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
 import { SocialLinks } from "./SocialIcons";
 
 const LINKS = [
   { label: "Accueil", href: "#accueil" },
   { label: "Services", href: "#services" },
-  { label: "Réalisations", href: "#realisations" },
+  { label: "Réalisations", href: REAL_ANCHOR },
   { label: "Méthode", href: "#methode" },
   { label: "Devis", href: "#devis" },
   { label: "Avis", href: "#avis" },

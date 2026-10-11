@@ -6,6 +6,10 @@ import { SectionHead } from "./Reveal";
 const FILTERS = ["Tous", "Plafonds", "Cloisons", "Décoration"];
 
 export default function Projects() {
+  return PROJECTS.length === 0 ? null : <ProjectsGallery />;   // aucune photo : la section n'apparaît pas
+}
+
+function ProjectsGallery() {
   const [filter, setFilter] = useState("Tous");
   const list = PROJECTS.filter((p) => filter === "Tous" || p.cat === filter);
   const track = useRef<HTMLDivElement>(null);

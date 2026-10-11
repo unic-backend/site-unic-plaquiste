@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, BadgeCheck, MapPin, Phone, Play, ShieldCheck, Star, Timer } from "lucide-react";
-import { IMAGES, PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
+import { IMAGES, PHONE, PHONE_LINK, WHATSAPP, REAL_ANCHOR } from "../data/content";
 import { SenegalFlag } from "./Logo";
 
 const fadeUp = {
@@ -69,7 +69,7 @@ export default function Hero() {
               </span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </a>
-            <a href="#realisations"
+            <a href={REAL_ANCHOR}
               className="group flex items-center gap-3 rounded-2xl border border-white/20 bg-white/5 px-6 py-4 backdrop-blur transition hover:border-gold-500/60 hover:bg-white/10">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/25 transition group-hover:bg-gold-500 group-hover:text-royal-950">
                 <Play className="h-4 w-4 fill-current" />

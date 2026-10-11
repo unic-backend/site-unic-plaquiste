@@ -3,7 +3,7 @@ import { LegalDialog, type LegalKind } from "./Legal";
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { LogoEmblem, SenegalFlag } from "./Logo";
 import { SocialLinks } from "./SocialIcons";
-import { APP_URL, NINEA, PHONE, PHONE_LINK, RCCM, WHATSAPP } from "../data/content";
+import { REAL_ANCHOR, APP_URL, NINEA, PHONE, PHONE_LINK, RCCM, WHATSAPP } from "../data/content";
 
 export default function Footer() {
   const [legal, setLegal] = useState<LegalKind | null>(null);
@@ -65,7 +65,7 @@ export default function Footer() {
         <div>
           <p className="font-condensed text-[14px] font-extrabold uppercase tracking-[0.24em] text-gold-400">Navigation</p>
           <ul className="mt-4 space-y-2.5 text-[15px] font-medium text-white/70">
-            {[["Accueil", "#accueil"], ["Réalisations", "#realisations"], ["Méthode", "#methode"], ["Devis", "#devis"], ["Avis clients", "#avis"], ["Contact", "#contact"]].map(([l, h]) => (
+            {[["Accueil", "#accueil"], ["Réalisations", REAL_ANCHOR], ["Méthode", "#methode"], ["Devis", "#devis"], ["Avis clients", "#avis"], ["Contact", "#contact"]].map(([l, h]) => (
               <li key={l}><a href={h} className="transition hover:text-gold-300">{l}</a></li>
             ))}
           </ul>
