@@ -70,6 +70,16 @@ export default function About() {
               des cloisons parfaitement droites, des faux plafonds qui jouent avec la lumière et des finitions sans le moindre défaut.
               Particuliers, bureaux, commerces, hôtels, architectes et promoteurs : même exigence partout. <SenegalFlag className="inline-block h-3.5 w-5 align-[-2px]" />
             </p>
+            <p className="mt-3 text-[16px] leading-relaxed text-slate-600">
+              Spécialistes du placo et des cloisons sèches en plaques de plâtre BA13, des faux plafonds, du staff, de l'isolation (thermique et acoustique)
+              et de la décoration, nous mettons la même passion dans chaque projet, du simple salon à la rénovation intérieure complète.
+              Notre signature : un chantier propre, des délais tenus et un résultat à la hauteur de vos attentes.
+            </p>
+            <p className="mt-3 text-[16px] leading-relaxed text-slate-600">
+              Nous intervenons chez les particuliers (maisons, villas, appartements, résidences) comme pour les professionnels : bureaux, commerces, boutiques,
+              restaurants, hôtels, écoles, cliniques et bâtiments industriels ou administratifs. Nous accompagnons aussi les architectes, promoteurs immobiliers
+              et entreprises du bâtiment sur les faux plafonds, cloisons, isolation et aménagement intérieur, à Dakar et partout au Sénégal.
+            </p>
           </Reveal>
 
           <div className="mt-7 grid gap-4 sm:grid-cols-2">

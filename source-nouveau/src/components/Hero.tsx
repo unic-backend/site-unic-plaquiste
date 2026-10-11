@@ -53,11 +53,12 @@ export default function Hero() {
             <span className="mt-2 flex items-center gap-3 text-[1.4rem] tracking-[0.2em] text-white/90 sm:text-2xl">
               <span className="h-[3px] w-12 bg-gold-500" /> AU SÉNÉGAL <SenegalFlag className="h-5 w-8 rounded shadow" />
             </span>
+            <span className="sr-only"> — UniC Plaquiste, plaquiste à Dakar</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} initial="hidden" animate="show" custom={2}
             className="mt-5 max-w-xl text-lg leading-relaxed text-royal-100/85">
-            Faux plafonds, cloisons, staff &amp; LED : <strong className="text-white">Unic Plaquiste</strong> transforme
+            <strong className="text-white">Unic Plaquiste</strong>, plaquiste à Dakar : faux plafonds BA13, cloisons, staff &amp; LED. Nous transformons
             vos villas, bureaux et commerces avec précision : placo, faux plafonds et finitions sur-mesure.
             <span className="text-gold-300"> Devis gratuit sous 48h.</span>
           </motion.p>

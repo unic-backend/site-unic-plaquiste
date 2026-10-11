@@ -21,8 +21,9 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-[#f6f7fd] font-sans">
+      <a href="#contenu" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-bold focus:text-royal-950">Aller au contenu</a>
       <Navbar />
-      <main>
+      <main id="contenu">
         <Hero />
         <Marquee />
         <Services />
