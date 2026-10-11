@@ -66,7 +66,7 @@ export default function Footer() {
         <div>
           <p className="font-condensed text-[14px] font-extrabold uppercase tracking-[0.24em] text-gold-400">Navigation</p>
           <ul className="mt-4 space-y-2.5 text-[15px] font-medium text-white/70">
-            {[["Accueil", "#accueil"], ["Réalisations", "#realisations"], ["Méthode", "#methode"], ["Application", "#devis"], ["Avis clients", "#avis"], ["Contact", "#contact"]].map(([l, h]) => (
+            {[["Accueil", "#accueil"], ["Réalisations", "#realisations"], ["Méthode", "#methode"], ["Estimation", "#devis"], ["Avis clients", "#avis"], ["Contact", "#contact"]].map(([l, h]) => (
               <li key={l}><a href={h} className="transition hover:text-gold-300">{l}</a></li>
             ))}
           </ul>

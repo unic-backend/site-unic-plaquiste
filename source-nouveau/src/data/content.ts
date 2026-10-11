@@ -75,3 +75,18 @@ export const FAQS = [
   { q: "Travaillez-vous pour les professionnels (bureaux, commerces, hôtels) ?", a: "Oui. Au-delà des particuliers, nous réalisons les faux plafonds, cloisons, l'isolation et l'aménagement intérieur de bureaux, commerces, boutiques, restaurants, hôtels, écoles, cliniques et bâtiments administratifs ou industriels. Nous collaborons aussi avec les architectes, promoteurs immobiliers et entreprises du bâtiment." },
   { q: "Posez-vous des cloisons et de l'isolation ?", a: "Oui. Nous montons les cloisons sèches et doublages en plaques de plâtre BA13 et posons l'isolation thermique et acoustique (laine de verre) pour améliorer le confort et l'insonorisation de vos pièces." },
 ];
+
+// PRIX INDICATIFS DU CALCULATEUR (FCFA) : à confirmer par le patron avant mise en ligne.
+// Un seul endroit à modifier : le calculateur se met à jour tout seul.
+export const TYPES = [
+  { id: "plafond", label: "Faux plafond placo", price: 8500 },
+  { id: "pvc", label: "Plafond PVC", price: 6500 },
+  { id: "cloison", label: "Cloison placo", price: 12000 },
+  { id: "staff", label: "Staff & corniches", price: 9500 },
+];
+export const OPTIONS = [
+  { id: "led", label: "Gorge + ruban LED", desc: "Éclairage indirect (par m²)", price: 3500 },
+  { id: "spots", label: "Spots encastrés (x6)", desc: "Par tranche de 25 m²", price: 45000 },
+  { id: "peinture", label: "Peinture lessivable", desc: "2 couches (par m²)", price: 2500 },
+  { id: "isolation", label: "Isolation phonique", desc: "Laine de verre (par m²)", price: 4000 },
+];

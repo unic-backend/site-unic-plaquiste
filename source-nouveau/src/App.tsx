@@ -5,7 +5,7 @@ import Services from "./components/Services";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Process from "./components/Process";
-import AppCta from "./components/AppCta";
+import QuoteCalculator from "./components/QuoteCalculator";
 import Testimonials from "./components/Testimonials";
 import Faq from "./components/Faq";
 import Contact from "./components/Contact";
@@ -23,7 +23,7 @@ export default function App() {
         <About />
         <Projects />
         <Process />
-        <AppCta />
+        <QuoteCalculator />
         <Testimonials />
         <Faq />
         <Contact />
