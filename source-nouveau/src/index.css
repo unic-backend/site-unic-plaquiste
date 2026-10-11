@@ -200,3 +200,5 @@ input[type="range"]::-moz-range-thumb {
 @media (prefers-reduced-motion: reduce) {
   .animate-floaty, .animate-floaty-slow, .animate-pulse-gold, .animate-spin-slow, .shine-sweep::before, .animate-marquee { animation: none !important; }
 }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }

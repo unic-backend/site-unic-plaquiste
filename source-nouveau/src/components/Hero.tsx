@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BadgeCheck, MapPin, Phone, Play, ShieldCheck, Star, Timer } from "lucide-react";
+import { ArrowRight, Phone, Play, ShieldCheck, Star, Timer } from "lucide-react";
 import { IMAGES, PHONE, PHONE_LINK, WHATSAPP, REAL_ANCHOR } from "../data/content";
 import { SenegalFlag } from "./Logo";
+import HeroSlides from "./HeroSlides";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -110,22 +111,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto w-full max-w-[560px]">
           {/* main frame */}
           <div className="relative overflow-hidden rounded-[28px] border-[3px] border-gold-500/70 shadow-[0_40px_90px_-20px_rgba(0,0,0,.7),0_0_60px_-10px_rgba(255,196,0,.35)]">
-            <img src={IMAGES.hero} alt="Salon avec faux plafond et éclairage LED réalisé par UniC Plaquiste à Dakar" className="aspect-[4/4.6] w-full object-cover sm:aspect-[4/4.2]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-royal-950/85 via-transparent to-transparent" />
-            {/* location tag */}
-            <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-royal-950/80 px-3.5 py-1.5 font-condensed text-[13px] font-bold uppercase tracking-widest text-white backdrop-blur">
-              <MapPin className="h-3.5 w-3.5 text-gold-400" /> Dakar — Sénégal
-            </div>
-            {/* bottom info */}
-            <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl">
-              <div>
-                <p className="font-condensed text-[12px] font-bold uppercase tracking-[0.2em] text-gold-300">Réalisation UniC</p>
-                <p className="font-display text-lg tracking-wide text-white">FAUX PLAFOND &amp; LED</p>
-              </div>
-              <span className="flex items-center gap-1.5 rounded-full bg-emerald-400/20 px-3 py-1.5 text-[13px] font-bold text-emerald-300 ring-1 ring-emerald-400/40">
-                <BadgeCheck className="h-4 w-4" /> Livré
-              </span>
-            </div>
+            <HeroSlides />
           </div>
           {/* rotating badge */}
           <div className="absolute -top-7 right-6 hidden h-28 w-28 items-center justify-center sm:flex">

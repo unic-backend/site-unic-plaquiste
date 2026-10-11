@@ -140,3 +140,16 @@ export const REFERENCES: { name: string; tag: string; cover: string | null; phot
   },
   { name: "Centre équestre de Diamniadio (CED)", tag: "À venir", cover: null, photos: [], soon: true },
 ];
+
+// HERO : photos d'un même chantier, défilement automatique toutes les 4 s (et à la main).
+export const HERO_SLIDES = [
+  { src: img("poster-03"), alt: "Faux plafond avec corniche lumineuse et rideaux", label: "FAUX PLAFOND & LED" },
+  { src: img("hero-01"), alt: "Plafond avec lignes LED et lustre", label: "PLAFOND & LIGNES LED" },
+  { src: img("hero-02"), alt: "Salon avec éclairage indirect et rideaux", label: "SALON & ÉCLAIRAGE INDIRECT" },
+  { src: img("hero-03"), alt: "Angle du salon avec gorge lumineuse", label: "GORGE LUMINEUSE" },
+  { src: img("hero-04"), alt: "Mur habillé de lames et applique murale", label: "HABILLAGE MURAL" },
+  { src: img("hero-05"), alt: "Mur à moulures blanches et appliques", label: "MOULURES & DÉCOR" },
+  { src: img("hero-06"), alt: "Mur habillé avec miroir et tablette", label: "MUR DÉCORATIF & MIROIR" },
+  { src: img("hero-07"), alt: "Cuisine ouverte et plafond", label: "CUISINE & PLAFOND" },
+  { src: img("hero-08"), alt: "Plafond de cuisine à lignes LED croisées", label: "PLAFOND À LIGNES LED" },
+];
