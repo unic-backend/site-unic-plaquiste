@@ -18,6 +18,7 @@ export default function Testimonials() {
     return () => clearInterval(t);
   }, []);
 
+  if (TESTIMONIALS.length === 0) return null;   // pas de faux avis : la section n'apparaît qu'avec de vrais avis Google
   const cur = TESTIMONIALS[idx];
 
   return (

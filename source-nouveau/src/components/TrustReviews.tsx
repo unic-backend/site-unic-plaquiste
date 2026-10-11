@@ -1,11 +1,11 @@
 import { BadgeCheck, FileText, PenLine, Star } from "lucide-react";
-import { MAPS_REVIEWS, NINEA, RCCM, REVIEW_URL } from "../data/content";
+import { MAPS_REVIEWS, NINEA, RCCM, REVIEW_URL, TESTIMONIALS } from "../data/content";
 import { Reveal } from "./Reveal";
 
 /** Avis Google + identité légale de l'entreprise (confiance). */
 export default function TrustReviews() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 lg:py-20">
+    <section id={TESTIMONIALS.length === 0 ? "avis" : undefined} className="relative overflow-hidden bg-white py-16 lg:py-20">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         <Reveal>
           <div className="flex justify-center gap-1 text-gold-500">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}</div>

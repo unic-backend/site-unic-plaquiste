@@ -66,12 +66,8 @@ export const ZONES = [
   { title: "International", text: "Projets sur demande" },
 ];
 
-export const TESTIMONIALS = [
-  { name: "Aida", role: "Dakar · Rénovation salon", text: "Mon salon est métamorphosé. Travail propre, équipe ponctuelle et vraiment à l'écoute. Je recommande à 100 %.", stars: 5, initial: "A" },
-  { name: "Mouhamed Touré", role: "Dakar · Faux plafond", text: "Faux plafond posé impeccablement et dans les délais annoncés. Un vrai savoir-faire, merci UniC Plaquiste.", stars: 5, initial: "M" },
-  { name: "Sertem", role: "Dakar · Aménagement bureaux", text: "Aménagement de nos locaux réalisé avec sérieux et des finitions soignées. Des professionnels de confiance.", stars: 5, initial: "S" },
-  { name: "Seynabou", role: "Dakar · Décoration intérieure", text: "De la première visite à la dernière retouche, tout était parfait. Le résultat dépasse largement mes attentes.", stars: 5, initial: "S" },
-];
+// AVIS : uniquement de vrais avis Google (nom, texte, étoiles recopiés tels quels). Vide = section masquée.
+export const TESTIMONIALS: { name: string; role: string; text: string; stars: number; initial: string }[] = [];
 
 export const FAQS = [
   { q: "Quel est le prix d'un faux plafond BA13 à Dakar ?", a: "Le prix dépend de la surface, du type de plafond (simple, décoratif, avec spots LED) et de l'état du chantier. Nous établissons un devis gratuit et détaillé après visite ou sur plans. Contactez-nous au 77 708 50 92 pour une estimation rapide." },
