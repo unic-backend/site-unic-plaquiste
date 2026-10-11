@@ -44,11 +44,11 @@ export default function HeroSlides() {
         return (
           <div key={s.src} aria-hidden={k !== i}
             className="absolute inset-0 transition-opacity duration-[1100ms] ease-in-out"
-            style={{ opacity: k === i ? 1 : 0 }}>
+            style={{ opacity: k === i ? 1 : 0, willChange: near ? "opacity" : "auto" }}>
             {near && (
               <img src={s.src} alt={s.alt} draggable={false} decoding="async"
                 className="h-full w-full object-cover transition-transform duration-[5500ms] ease-out"
-                style={{ transform: k === i ? "scale(1)" : "scale(1.07)" }} />
+                style={{ transform: k === i ? "scale(1)" : "scale(1.07)", willChange: near ? "transform" : "auto" }} />
             )}
           </div>
         );
