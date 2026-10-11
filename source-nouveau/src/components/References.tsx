@@ -8,6 +8,7 @@ type Ref = (typeof REFERENCES)[number];
 const SLIDE = "relative h-[210px] shrink-0 snap-center overflow-hidden rounded-3xl border border-white/10 bg-royal-950 shadow-xl sm:h-[340px]";
 const LAND = "aspect-[16/10]";
 const PORT = "aspect-[3/4]";
+const TALL = "aspect-[9/16]";
 
 /** Une référence = sa propre section : la photo du site en premier, puis nos réalisations en glissant vers la gauche. */
 function Block({ r }: { r: Ref }) {
@@ -39,7 +40,7 @@ function Block({ r }: { r: Ref }) {
             <div className="absolute inset-0 bg-gradient-to-t from-royal-950/70 via-transparent to-transparent" />
           </figure>
           {r.photos.map((p, k) => (
-            <figure key={p.src} className={`${SLIDE} ${p.portrait ? PORT : LAND}`}>
+            <figure key={p.src} className={`${SLIDE} ${p.tall ? TALL : p.portrait ? PORT : LAND}`}>
               <img src={p.src} alt={`${r.name} — réalisation UniC ${k + 1}`} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
             </figure>
           ))}

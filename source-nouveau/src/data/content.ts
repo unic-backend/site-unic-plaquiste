@@ -103,7 +103,7 @@ export const BEFORE_AFTER = [
 // GRANDES RÉFÉRENCES : noms et photos donnés par le patron.
 // `cover` = photo du site (le grand projet). `photos` = photos de NOS réalisations sur ce site : on les ajoute ici
 // (ex. img("ref-stade-01")) après les avoir déposées dans /images ; elles apparaissent en glissant vers la gauche.
-export const REFERENCES: { name: string; tag: string; cover: string | null; photos: { src: string; portrait?: boolean }[]; soon?: boolean }[] = [
+export const REFERENCES: { name: string; tag: string; cover: string | null; photos: { src: string; portrait?: boolean; tall?: boolean }[]; soon?: boolean }[] = [
   {
     name: "Stade Abdoulaye Wade", tag: "Grand projet", cover: img("ref-stade-abdoulaye-wade"),
     photos: [
@@ -114,6 +114,16 @@ export const REFERENCES: { name: string; tag: string; cover: string | null; phot
     ],
   },
   { name: "Dakar Arena", tag: "Grand projet", cover: img("ref-dakar-arena"), photos: [] },
-  { name: "Université Amadou Mahtar Mbow (UAM)", tag: "Grand projet", cover: img("ref-uam"), photos: [] },
+  {
+    name: "Université Amadou Mahtar Mbow (UAM)", tag: "Grand projet", cover: img("ref-uam"),
+    photos: [
+      { src: img("ref-uam-01"), portrait: true },   // ossature métallique et premières plaques
+      { src: img("ref-uam-05"), tall: true },       // pose des cloisons avec l'équipe
+      { src: img("ref-uam-02"), portrait: true },   // joints et enduit
+      { src: img("ref-uam-03"), portrait: true },   // finition
+      { src: img("ref-uam-04") },                   // cloison terminée et porte
+      { src: img("ref-uam-06") },                   // bureau terminé
+    ],
+  },
   { name: "Centre équestre de Diamniadio (CED)", tag: "À venir", cover: null, photos: [], soon: true },
 ];
