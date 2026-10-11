@@ -28,7 +28,7 @@ export default function Testimonials() {
         <SectionHead
           eyebrow="Ils nous font confiance"
           title={<>Ils nous font <span className="text-gold-600">confiance.</span></>}
-          desc="Les retours de nos clients à Dakar. Retrouvez aussi tous les avis sur Google."
+          desc="Les retours de nos clients. Retrouvez aussi tous les avis sur Google."
         />
 
         <div className="relative mt-12">

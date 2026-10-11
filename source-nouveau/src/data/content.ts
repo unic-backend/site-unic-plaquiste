@@ -67,7 +67,10 @@ export const ZONES = [
 ];
 
 // AVIS : uniquement de vrais avis Google (nom, texte, étoiles recopiés tels quels). Vide = section masquée.
-export const TESTIMONIALS: { name: string; role: string; text: string; stars: number; initial: string }[] = [];
+export const TESTIMONIALS: { name: string; role: string; text: string; stars: number; initial: string }[] = [
+  { name: "Khadige Farhat", role: "Avis Google · Chantier à Thiès", text: "J'avais un chantier sur Thiès, j'ai fait appel à Unic Plaquiste et je recommande fortement. Ils travaillent sérieusement et les tarifs sont très corrects. Toujours les premiers à l'heure sur le chantier et très professionnels. Finitions très correctes. Merci à Unic Plaquiste 🙏", stars: 5, initial: "K" },
+  { name: "Mohamed Lamine Diallo", role: "Avis Google", text: "Très professionnel et flexible, Maach'Allah", stars: 5, initial: "M" },
+];
 
 export const FAQS = [
   { q: "Quel est le prix d'un faux plafond BA13 à Dakar ?", a: "Le prix dépend de la surface, du type de plafond (simple, décoratif, avec spots LED) et de l'état du chantier. Nous établissons un devis gratuit et détaillé après visite ou sur plans. Contactez-nous au 77 708 50 92 pour une estimation rapide." },
