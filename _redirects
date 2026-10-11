@@ -8,3 +8,7 @@ https://unicplaquiste.netlify.app/*   https://www.unicplaquiste.com/:splat   301
 # 2) /index.html est un doublon exact de la racine "/". Le "!" est obligatoire :
 #    sans lui, le fichier statique existant prendrait le pas sur la règle.
 /index.html   /   301!
+
+# 3) L'ancien aperçu /nouveau/ est devenu la page d'accueil.
+/nouveau   /   301!
+/nouveau/  /   301!
