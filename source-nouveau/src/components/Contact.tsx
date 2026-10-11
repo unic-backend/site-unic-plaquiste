@@ -72,6 +72,9 @@ export default function Contact() {
             {/* map */}
             <Reveal delay={0.2}>
               <a href={MAPS} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4 font-condensed text-[15px] font-extrabold uppercase tracking-[0.14em] text-gold-300 transition hover:border-gold-500/50 hover:bg-white/10">Obtenir l'itinéraire <MapPin className="h-5 w-5" /></a>
+              <iframe title="Localisation UniC Plaquiste à Dakar" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen
+                src="https://www.google.com/maps?q=Unic%20Plaquiste%2C%20Guelle%20Tap%C3%A9e%2C%20Rue%2059%20X%2062%2C%20Dakar&z=16&hl=fr&output=embed"
+                className="mt-4 h-56 w-full rounded-2xl border border-white/10" />
             </Reveal>
           </div>
 
