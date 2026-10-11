@@ -17,9 +17,11 @@ export default function Hero() {
     <section id="accueil" className="bg-royal-deep noise relative overflow-hidden pt-[84px] lg:pt-[112px]">
       {/* backdrop décor */}
       {/* photo de fond sombre */}
-      <img src={IMAGES.heroBg} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover object-center" />
-      <div className="absolute inset-0 bg-gradient-to-r from-royal-950/85 via-royal-950/65 to-royal-950/20 max-lg:from-royal-950/75 max-lg:via-royal-950/65 max-lg:to-royal-950/55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-royal-950/80 via-transparent to-royal-950/20" />
+      <img src={IMAGES.heroBg} alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 hidden h-full w-full object-cover object-center lg:block" />
+      {/* mobile : fond bleu classique avec quadrillage ; ordinateur : photo */}
+      <div className="blueprint-grid absolute inset-0 lg:hidden" />
+      <div className="absolute inset-0 hidden bg-gradient-to-r from-royal-950/85 via-royal-950/65 to-royal-950/20 lg:block" />
+      <div className="absolute inset-0 hidden bg-gradient-to-t from-royal-950/80 via-transparent to-royal-950/20 lg:block" />
       <div className="absolute -left-40 top-20 h-[480px] w-[480px] rounded-full bg-royal-500/25 blur-[120px]" />
       <div className="absolute -right-32 bottom-0 h-[420px] w-[420px] rounded-full bg-gold-500/15 blur-[120px]" />
       <div className="absolute left-1/2 top-0 h-px w-[80%] -translate-x-1/2 bg-gradient-to-r from-transparent via-gold-500/60 to-transparent" />
