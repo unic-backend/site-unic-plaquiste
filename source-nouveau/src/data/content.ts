@@ -100,10 +100,12 @@ export const BEFORE_AFTER = [
   { after: img("avantapres-13"), before: img("avantapres-14"), alt: "Mur décoratif en plâtre avant et après finitions" },
 ];
 
-// GRANDES RÉFÉRENCES : noms donnés par le patron. Pour ajouter une photo : mettre son chemin dans `img`
-// (ex. img("ref-stade-abdoulaye-wade")) après l'avoir déposée dans /images. Sans photo : carte « nuit » élégante.
-export const REFERENCES: { name: string; tag: string; img: string | null }[] = [
-  { name: "Stade Abdoulaye Wade", tag: "Grand projet", img: null },
-  { name: "UAM", tag: "Grand projet", img: null },
-  { name: "Centre équestre (CED)", tag: "Grand projet", img: null },
+// GRANDES RÉFÉRENCES : noms et photos donnés par le patron.
+// `cover` = photo du site (le grand projet). `photos` = photos de NOS réalisations sur ce site : on les ajoute ici
+// (ex. img("ref-stade-01")) après les avoir déposées dans /images ; elles apparaissent en glissant vers la gauche.
+export const REFERENCES: { name: string; tag: string; cover: string | null; photos: string[]; soon?: boolean }[] = [
+  { name: "Stade Abdoulaye Wade", tag: "Grand projet", cover: img("ref-stade-abdoulaye-wade"), photos: [] },
+  { name: "Dakar Arena", tag: "Grand projet", cover: img("ref-dakar-arena"), photos: [] },
+  { name: "Université Amadou Mahtar Mbow (UAM)", tag: "Grand projet", cover: img("ref-uam"), photos: [] },
+  { name: "Centre équestre de Diamniadio (CED)", tag: "À venir", cover: null, photos: [], soon: true },
 ];
