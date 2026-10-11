@@ -23,7 +23,7 @@ export default function Services() {
           desc="Faux plafonds BA13, cloisons sèches, doublage, isolation, staff et finitions : une gamme complète de second œuvre pour la rénovation et l'aménagement intérieur de vos espaces à Dakar."
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
           {SERVICES.map((s, i) => {
             const Icon = ICONS[s.icon];
             const featured = i === 0;
@@ -34,7 +34,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: (i % 3) * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className={`group relative overflow-hidden rounded-3xl p-[2px] transition-transform duration-300 hover:-translate-y-2 ${
+                className={`group relative w-[82vw] max-w-[360px] shrink-0 snap-center overflow-hidden rounded-3xl p-[2px] sm:w-auto sm:max-w-none transition-transform duration-300 hover:-translate-y-2 ${
                   featured
                     ? "bg-gradient-to-br from-gold-300 via-gold-500 to-gold-700 shadow-[0_24px_60px_-16px_rgba(255,196,0,.6)]"
                     : "bg-gradient-to-br from-royal-100 to-slate-200 hover:from-gold-300 hover:via-gold-500 hover:to-gold-700 hover:shadow-[0_24px_60px_-16px_rgba(255,196,0,.55)]"

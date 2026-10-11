@@ -23,7 +23,7 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7 }}
             className="relative overflow-hidden rounded-[28px] shadow-[0_30px_70px_-20px_rgba(2,8,58,.4)]"
           >
-            <img src={IMAGES.about1} alt="Faux plafond lumineux réalisé par UniC Plaquiste à Dakar" className="aspect-[4/4.4] w-full object-cover" />
+            <img src={IMAGES.about1} alt="Faux plafond lumineux réalisé par UniC Plaquiste à Dakar" className="aspect-[4/3] w-full object-cover sm:aspect-[4/4.4]" />
             <div className="absolute inset-0 bg-gradient-to-t from-royal-950/60 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 rounded-2xl bg-white/95 p-4 backdrop-blur">
               <span className="bg-royal-deep flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-gold-400">

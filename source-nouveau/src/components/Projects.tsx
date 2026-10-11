@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, MapPin, Maximize2 } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Maximize2 } from "lucide-react";
 import { PROJECTS, WHATSAPP } from "../data/content";
 import { SectionHead } from "./Reveal";
 
@@ -9,6 +8,9 @@ const FILTERS = ["Tous", "Plafonds", "Cloisons", "Décoration"];
 export default function Projects() {
   const [filter, setFilter] = useState("Tous");
   const list = PROJECTS.filter((p) => filter === "Tous" || p.cat === filter);
+  const track = useRef<HTMLDivElement>(null);
+  const slide = (d: number) => track.current?.scrollBy({ left: d * Math.min(360, track.current.clientWidth * 0.8), behavior: "smooth" });
+  const pick = (f: string) => { setFilter(f); track.current?.scrollTo({ left: 0 }); };
 
   return (
     <section id="realisations" className="bg-royal-deep noise relative overflow-hidden py-20 lg:py-28">
@@ -31,7 +33,7 @@ export default function Projects() {
           {FILTERS.map((f) => (
             <button
               key={f}
-              onClick={() => setFilter(f)}
+              onClick={() => pick(f)}
               className={`rounded-full px-6 py-2.5 font-condensed text-[15px] font-extrabold uppercase tracking-[0.14em] transition-all ${
                 filter === f
                   ? "bg-gold-gloss text-royal-950 shadow-[0_10px_28px_-8px_rgba(255,196,0,.7)]"
@@ -43,19 +45,13 @@ export default function Projects() {
           ))}
         </div>
 
-        <motion.div layout className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
+        <div className="relative mt-10">
+          <button onClick={() => slide(-1)} aria-label="Photos précédentes" className="absolute -left-2 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-royal-950 shadow-xl transition hover:bg-gold-500 lg:flex"><ChevronLeft className="h-6 w-6" /></button>
+          <button onClick={() => slide(1)} aria-label="Photos suivantes" className="absolute -right-2 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-royal-950 shadow-xl transition hover:bg-gold-500 lg:flex"><ChevronRight className="h-6 w-6" /></button>
+          <div ref={track} className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
             {list.map((p) => (
-              <motion.figure
-                layout
-                key={p.title}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.92 }}
-                transition={{ duration: 0.4 }}
-                className="group relative cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-royal-950 shadow-xl"
-              >
-                <img src={p.img} alt={p.title} loading="lazy" className="aspect-[4/3.4] w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <figure key={p.title} className="group relative w-[78vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-white/10 bg-royal-950 shadow-xl sm:w-[320px]">
+                <img src={p.img} alt={p.title} loading="lazy" className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-royal-950 via-royal-950/20 to-transparent opacity-90" />
                 {/* top badges */}
                 <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
@@ -77,10 +73,11 @@ export default function Projects() {
                   </span>
                 </figcaption>
                 <span className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 transition-transform duration-500 group-hover:scale-x-100" />
-              </motion.figure>
+              </figure>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+          <p className="mt-2 text-center font-condensed text-[13px] font-bold uppercase tracking-[0.2em] text-white/50 lg:hidden">← Glissez pour voir d'autres réalisations →</p>
+        </div>
 
         <div className="mt-10 text-center">
           <a href={WHATSAPP} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-gold-500/50 bg-gold-500/10 px-8 py-4 font-condensed text-lg font-extrabold uppercase tracking-[0.1em] text-gold-400 transition hover:bg-gold-500 hover:text-royal-950">

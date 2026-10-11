@@ -43,14 +43,14 @@ export default function Process() {
           desc="Un processus clair, transparent et sans surprise."
         />
 
-        <div className="relative mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="relative -mx-4 mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-4 pb-4 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
           {/* connector line */}
           <div className="absolute left-0 right-0 top-[52px] hidden h-[3px] lg:block">
             <div className="h-full w-full bg-gradient-to-r from-royal-200 via-gold-400 to-royal-200 opacity-60" />
           </div>
 
           {STEPS.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.1}>
+            <Reveal key={s.n} delay={i * 0.1} className="w-[78vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none">
               <div className="group relative h-full rounded-3xl bg-white p-7 shadow-[0_18px_50px_-18px_rgba(2,8,58,.25)] ring-1 ring-slate-100 transition hover:-translate-y-2 hover:shadow-[0_28px_60px_-18px_rgba(255,170,0,.45)] hover:ring-gold-500/50">
                 <div className="flex items-center justify-between">
                   <span className="bg-royal-deep relative z-10 flex h-[72px] w-[72px] items-center justify-center rounded-2xl text-gold-400 shadow-lg transition group-hover:bg-gold-500 group-hover:text-royal-950">
