@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Play, ShieldCheck, Star, Timer } from "lucide-react";
+import { ArrowRight, BookOpen, Phone, Play, ShieldCheck, Star, Timer } from "lucide-react";
 import { IMAGES, PHONE, PHONE_LINK, WHATSAPP, REAL_ANCHOR } from "../data/content";
 import { SenegalFlag } from "./Logo";
 import HeroSlides from "./HeroSlides";
@@ -12,6 +12,24 @@ const fadeUp = {
     transition: { delay: 0.1 + i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
+
+/** Bannière vers le portfolio (page /portfolio/, avec le PDF à télécharger). */
+function PortfolioBanner({ className = "" }: { className?: string }) {
+  return (
+    <motion.a href="/portfolio/" variants={fadeUp} initial="hidden" animate="show" custom={0}
+      aria-label="Voir notre portfolio : nos projets en photos"
+      className={`group items-center gap-3 rounded-2xl border border-gold-500/60 bg-royal-950/70 p-2 pr-4 shadow-[0_18px_44px_-18px_rgba(255,196,0,.55)] backdrop-blur transition hover:-translate-y-0.5 hover:border-gold-400 ${className}`}>
+      <span className="bg-gold-gloss flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-royal-950">
+        <BookOpen className="h-6 w-6" />
+      </span>
+      <span className="min-w-0 flex-1 leading-tight">
+        <span className="block font-condensed text-lg font-extrabold uppercase tracking-[0.08em] text-white">Voir notre portfolio</span>
+        <span className="block truncate text-[13px] text-royal-100/80">Nos projets en photos · version PDF</span>
+      </span>
+      <ArrowRight className="h-5 w-5 shrink-0 text-gold-400 transition-transform group-hover:translate-x-1" />
+    </motion.a>
+  );
+}
 
 export default function Hero() {
   return (
@@ -34,6 +52,7 @@ export default function Hero() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-16">
         {/* ------- left ------- */}
         <div>
+          <PortfolioBanner className="mb-6 flex lg:hidden" />
           <motion.div variants={fadeUp} initial="hidden" animate="show" custom={0}
             className="inline-flex max-w-full items-center gap-2 rounded-full border border-gold-500/30 bg-white/5 py-1.5 pl-1.5 pr-4 backdrop-blur">
             <span className="bg-gold-gloss flex items-center gap-1 rounded-full px-3 py-1 font-condensed text-[13px] font-extrabold uppercase tracking-widest text-royal-950">
@@ -108,8 +127,10 @@ export default function Hero() {
         </div>
 
         {/* ------- right visual ------- */}
+        <div className="mx-auto w-full max-w-[560px]">
+        <PortfolioBanner className="mb-5 hidden lg:flex" />
         <motion.div initial={{ opacity: 0, scale: 0.94, y: 24 }} animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto w-full max-w-[560px]">
+          transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }} className="relative w-full">
           {/* main frame */}
           <div className="relative overflow-hidden rounded-[28px] border-[3px] border-gold-500/70 shadow-[0_40px_90px_-20px_rgba(0,0,0,.7),0_0_60px_-10px_rgba(255,196,0,.35)]">
             <HeroSlides />
@@ -128,6 +149,7 @@ export default function Hero() {
             </a>
           </div>
         </motion.div>
+        </div>
       </div>
 
       {/* phone strip mobile */}
