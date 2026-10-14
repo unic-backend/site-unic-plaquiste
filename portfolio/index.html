@@ -34,7 +34,8 @@
   --green:#7cc576; --wa:#25d366;
   --gutter:clamp(24px,6vw,96px);
   --pad:clamp(80px,12vw,150px);
-  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --lap:clamp(28px,5vw,64px);
   --flip:cubic-bezier(.65,0,.25,1);
   --display:"Anton","Impact",sans-serif;
   --cond:"Barlow Condensed","Arial Narrow",sans-serif;
@@ -51,7 +52,15 @@ a{color:inherit}
 .skip{position:absolute;left:12px;top:-60px;background:var(--gold);color:var(--royal);padding:10px 16px;border-radius:10px;font-weight:700;z-index:100}
 .skip:focus{top:12px}
 h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:1.02;text-transform:uppercase}
-.sec{padding:var(--pad) var(--gutter);position:relative}
+.sec{padding:var(--pad) var(--gutter);position:relative;z-index:1}
+/* sections qui se recouvrent, comme des feuilles qu'on fait glisser */
+.services,.reviews{margin-top:calc(var(--lap) * -1);border-radius:var(--lap) var(--lap) 0 0;z-index:2}
+.stats,.contact{margin-top:calc(var(--lap) * -1);border-radius:var(--lap) var(--lap) 0 0;z-index:3}
+.about{padding-bottom:calc(var(--pad) + var(--lap))}
+.work .after{padding-bottom:calc(var(--pad) + var(--lap))}
+.services{padding-bottom:calc(var(--pad) + var(--lap))}
+/* barre de progression de la page */
+.sprog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;z-index:70;pointer-events:none}
 .on-royal{background:var(--royal);color:var(--soft)}
 .on-soft{background:var(--soft);color:var(--royal)}
 .wrap{max-width:1240px;margin:0 auto}
@@ -148,7 +157,8 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
 .collage{position:relative;padding:0 0 70px 0;max-width:560px}
 .collage .p1{width:78%;border:6px solid var(--royal);box-shadow:12px 12px 0 var(--royal);transform:rotate(-2deg);background:var(--royal)}
 .collage .p2{position:absolute;right:0;bottom:0;width:50%;border:6px solid var(--royal);box-shadow:10px 10px 0 var(--royal);transform:rotate(4deg);background:var(--royal)}
-.collage img{width:100%;height:100%;object-fit:cover}
+.collage .p1,.collage .p2{overflow:hidden}
+.collage img{width:100%;height:100%;object-fit:cover;scale:1.14;will-change:translate}
 .collage .p1 img{aspect-ratio:3/4}
 .collage .p2 img{aspect-ratio:1/1}
 .note{position:absolute;left:4%;bottom:6px;font-family:"Mrs Saint Delafield",cursive;font-size:clamp(34px,6vw,50px);line-height:.9;color:var(--royal-2);transform:rotate(-5deg)}
@@ -161,9 +171,9 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
 .services h2,.work h2,.reviews h2{font-size:clamp(38px,6.6vw,84px)}
 .srow{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:center;padding:clamp(22px,3.2vw,38px) 0;border-top:1.5px solid rgba(255,239,163,.28)}
 .srow:last-child{border-bottom:1.5px solid rgba(255,239,163,.28)}
-.stile{width:clamp(56px,8vw,92px);aspect-ratio:1;border-radius:22px;background:var(--gold);display:grid;place-items:center;transition:transform .5s var(--ease)}
+.stile{width:clamp(56px,8vw,92px);aspect-ratio:1;border-radius:22px;background:var(--gold);display:grid;place-items:center;transition:transform .5s var(--ease);will-change:rotate}
 .stile svg{width:48%;height:48%;stroke:var(--royal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.srow h3{font-size:clamp(26px,4.2vw,52px);transition:transform .45s var(--ease)}
+.srow h3{font-size:clamp(26px,4.2vw,52px);transition:transform .45s var(--ease);will-change:translate}
 .srow p{margin-top:6px;font-size:clamp(16px,1.8vw,19px);opacity:.86;max-width:60ch}
 .srow:hover .stile{transform:rotate(-12deg) scale(1.1)}
 .srow:hover h3{transform:translateX(12px)}
@@ -193,7 +203,8 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
 .track{display:flex;gap:clamp(20px,3vw,40px);padding:0 max(var(--gutter),12vw);width:max-content;will-change:transform}
 .card{flex:none;width:min(78vw,520px)}
 .card .frame{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px rgba(2,8,58,.18);height:min(48svh,460px)}
-.card .frame img{width:100%;height:100%;object-fit:cover}
+.card .frame img{width:100%;height:100%;object-fit:cover;scale:1.09;will-change:translate}
+.card{will-change:transform,opacity}
 .card .frame.soon{background:var(--royal);color:var(--soft);display:grid;place-items:center;text-align:center;padding:24px}
 .card .frame.soon b{font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,48px);text-transform:uppercase;line-height:1}
 .cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:14px;padding:0 4px}
@@ -235,15 +246,15 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
 .legal{margin-top:clamp(44px,7vw,90px);display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;font-size:14px;opacity:.85}
 
 /* ---------- révélations ---------- */
-.js .rv{opacity:0;transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.js .rv[data-rv="up"]{transform:translateY(50px)}
-.js .rv[data-rv="left"]{transform:translateX(-80px) rotate(-3deg)}
-.js .rv[data-rv="right"]{transform:translateX(80px) rotate(3deg)}
-.js .rv[data-rv="scale"]{transform:scale(.8) rotate(-4deg)}
+.js .rv{opacity:0;transition:opacity 1.1s var(--ease),transform 1.3s var(--ease)}
+.js .rv[data-rv="up"]{transform:translateY(70px) scale(.97)}
+.js .rv[data-rv="left"]{transform:translateX(-130px) rotate(-5deg)}
+.js .rv[data-rv="right"]{transform:translateX(130px) rotate(5deg)}
+.js .rv[data-rv="scale"]{transform:scale(.7) rotate(-8deg)}
 .js .rv.in{opacity:1;transform:none}
 .js .rv.in[data-rv="scale"]{transition-timing-function:cubic-bezier(.34,1.56,.64,1)}
 .sp{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
-.sp > i{display:inline-block;font-style:normal;transform:translateY(110%);transition:transform .8s var(--ease);transition-delay:calc(var(--k)*70ms)}
+.sp > i{display:inline-block;font-style:normal;transform:translateY(115%) rotate(5deg);transform-origin:0 100%;transition:transform 1.1s var(--ease);transition-delay:calc(var(--k)*90ms)}
 .in .sp > i{transform:none}
 .no-js .sp > i{transform:none}
 
@@ -264,6 +275,10 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
   .nav,.wa{transform:translate(-50%,0)}
   .wa{transform:none}
   .marq .track{transform:none}
+  .sprog{display:none}
+  .collage img,.card .frame img{scale:1!important;translate:none!important}
+  .stile,.srow h3{rotate:none!important;translate:none!important}
+  .card{transform:none!important;opacity:1!important}
 }
 
 /* ---------- impression : le book en PDF ---------- */
@@ -285,11 +300,17 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
   .sec,.marq{break-inside:avoid}
   .js .rv{opacity:1!important;transform:none!important}
   .bar2{display:none}
+  .sprog{display:none}
+  .card{transform:none!important;opacity:1!important}
+  .tag{transform:none!important}
+  .sec{margin-top:0!important;border-radius:0!important}
+  .collage img,.card .frame img{scale:1!important;translate:none!important}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
+<div class="sprog" id="sprog" aria-hidden="true"></div>
 
 <header class="nav" id="nav" aria-label="Navigation">
   <a class="logo" href="#top" aria-label="UniC Plaquiste, haut de page"><img src="/images/logo-unic-512.webp" alt="" width="30" height="30"><span>UNIC</span></a>
@@ -518,16 +539,27 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
   }
 
   /* ---- en-tête et WhatsApp après l'intro ---- */
-  var nav = $("#nav"), wa = $("#wa"), words = $("#words"), ticking = false;
+  var nav = $("#nav"), wa = $("#wa"), words = $("#words"), sprog = $("#sprog"), foot = $(".introfoot");
+  var sy = window.scrollY, raf = 0;
+  function clamp(v, a, b){ return v < a ? a : v > b ? b : v; }
+  /* en-tête : suit le vrai défilement */
   function onScroll(){
-    ticking = false;
     var y = window.scrollY, h = intro.offsetHeight;
     var show = y > h * .7;
     nav.classList.toggle("show", show); wa.classList.toggle("show", show);
-    if (!reduced && y < h){ words.style.transform = "translate3d(0," + (y * .16) + "px,0)"; words.style.opacity = String(Math.max(0, 1 - y / (h * .9))); }
-    updatePin();
+    wake();
   }
-  window.addEventListener("scroll", function(){ if (!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  /* la page défile normalement ; seuls les effets liés au défilement suivent une position adoucie (inertie) */
+  function wake(){ if (!raf && !reduced) raf = requestAnimationFrame(frame); }
+  function frame(){
+    raf = 0;
+    var target = window.scrollY, d = target - sy;
+    sy += d * .13;
+    if (Math.abs(target - sy) < .25) sy = target;
+    render(sy, target - sy);
+    if (sy !== target) raf = requestAnimationFrame(frame);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
 
   /* ---- titres découpés en mots ---- */
   $$("[data-split]").forEach(function(el){
@@ -582,20 +614,55 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-he
     wrapEl.style.height = (vh + total) + "px";
     startY = wrapEl.getBoundingClientRect().top + window.scrollY;
   }
-  function updatePin(){
+  var parImgs = $$(".collage img"), srows = $$(".srow"), tagEl = $("#tag");
+  var cardImgs = cards.map(function(c){ return $("img", c); });
+  function render(y, lag){
+    if (reduced) return;
+    var vh = window.innerHeight, vw = window.innerWidth, h = intro.offsetHeight, i, r, d;
+    /* progression de la page */
+    var doc = document.documentElement.scrollHeight - vh;
+    sprog.style.transform = "scaleX(" + (doc > 0 ? clamp(y / doc, 0, 1) : 0) + ")";
+    /* intro : mots qui montent, carte qui recule en douceur */
+    if (y < h * 1.1){
+      var q = clamp(y / h, 0, 1);
+      words.style.transform = "translate3d(0," + (y * .2) + "px,0) scale(" + (1 + q * .06) + ")";
+      words.style.opacity = String(Math.max(0, 1 - q * 1.1));
+      tagEl.style.transform = "translate3d(0," + (y * .3) + "px,0) scale(" + (1 - q * .12) + ")";
+      foot.style.opacity = String(Math.max(0, 1 - q * 2.4));
+    }
+    /* collage : les photos glissent à des vitesses différentes dans leur cadre */
+    for (i = 0; i < parImgs.length; i++){
+      r = parImgs[i].parentNode.getBoundingClientRect();
+      if (r.bottom < -80 || r.top > vh + 80) continue;
+      d = clamp(((r.top + r.height / 2) - vh / 2) / vh, -1, 1);
+      parImgs[i].style.translate = "0 " + (d * (i ? -7 : 7)).toFixed(2) + "%";
+    }
+    /* services : la ligne au centre de l'écran se met en avant */
+    for (i = 0; i < srows.length; i++){
+      r = srows[i].getBoundingClientRect();
+      if (r.bottom < -80 || r.top > vh + 80) continue;
+      d = clamp(((r.top + r.height / 2) - vh / 2) / vh, -1, 1);
+      $(".stile", srows[i]).style.rotate = (d * 22).toFixed(1) + "deg";
+      $("h3", srows[i]).style.translate = (d * -26).toFixed(1) + "px 0";
+    }
+    /* rangée de réalisations */
     if (native || !total) return;
-    var vh = window.innerHeight, vw = window.innerWidth;
-    var p = Math.min(1, Math.max(0, (window.scrollY - startY) / total));
+    var p = clamp((y - startY) / total, 0, 1);
     track.style.transform = "translate3d(" + (-p * maxX) + "px,0,0)";
     prog.style.transform = "scaleX(" + p + ")";
-    for (var i = 0; i < cards.length; i++){
-      var r = cards[i].getBoundingClientRect(), d = ((r.left + r.width / 2) - vw / 2) / vw, a = Math.min(1, Math.abs(d));
-      cards[i].style.transform = "scale(" + (1 - a * .12).toFixed(3) + ") rotate(" + (d * 5).toFixed(2) + "deg)";
+    var sk = clamp(-lag * .1, -4, 4);
+    for (i = 0; i < cards.length; i++){
+      r = cards[i].getBoundingClientRect(); d = ((r.left + r.width / 2) - vw / 2) / vw;
+      var a = Math.min(1, Math.abs(d));
+      cards[i].style.transform = "scale(" + (1 - a * .14).toFixed(3) + ") rotate(" + (d * 6).toFixed(2) + "deg) skewX(" + sk.toFixed(2) + "deg)";
+      cards[i].style.opacity = (1 - a * .5).toFixed(2);
+      if (cardImgs[i]) cardImgs[i].style.translate = (clamp(d, -1, 1) * -4).toFixed(2) + "% 0";
     }
   }
-  measure(); onScroll();
-  window.addEventListener("resize", function(){ measure(); onScroll(); });
-  window.addEventListener("load", function(){ measure(); onScroll(); });
+  function boot(){ measure(); sy = window.scrollY; onScroll(); render(sy, 0); }
+  boot();
+  window.addEventListener("resize", boot);
+  window.addEventListener("load", boot);
 
   /* ---- boutons magnétiques (souris uniquement) ---- */
   if (!reduced && window.matchMedia("(hover:hover) and (pointer:fine)").matches){
