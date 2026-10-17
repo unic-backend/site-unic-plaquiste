@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 import { MessageCircleQuestion, Minus, Plus } from "lucide-react";
 import { FAQS, WHATSAPP } from "../data/content";
 import { Reveal, SectionHead } from "./Reveal";

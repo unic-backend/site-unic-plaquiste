@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowRight, BookOpen, Phone, Play, ShieldCheck, Star, Timer } from "lucide-react";
 import { IMAGES, PHONE, PHONE_LINK, WHATSAPP, REAL_ANCHOR } from "../data/content";
 import { SenegalFlag } from "./Logo";

@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export function Reveal({
