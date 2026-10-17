@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 import { MapPin, Menu, Phone, X } from "lucide-react";
 
 import { LogoLockup, SenegalFlag } from "./Logo";

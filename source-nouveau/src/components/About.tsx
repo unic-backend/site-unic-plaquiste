@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowRight, Award, CheckCircle2, HardHat, Phone } from "lucide-react";
 import { IMAGES, PHONE, PHONE_LINK, STATS, WHATSAPP } from "../data/content";
 import { Counter, Reveal } from "./Reveal";

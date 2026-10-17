@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, Crown, Grid2X2, Home, Layers, Lightbulb, PaintRoller } from "lucide-react";
 import { SERVICES } from "../data/content";
 import { Reveal, SectionHead } from "./Reveal";

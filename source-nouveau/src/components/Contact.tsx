@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { ADDRESS, EMAIL, MAPS, PHONE, PHONE_LINK, WHATSAPP } from "../data/content";
 import { Reveal } from "./Reveal";

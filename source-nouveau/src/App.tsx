@@ -1,4 +1,4 @@
-import { MotionConfig } from "framer-motion";
+import { LazyMotion, MotionConfig, domAnimation } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
@@ -19,6 +19,7 @@ import Floating from "./components/Floating";
 
 export default function App() {
   return (
+    <LazyMotion features={domAnimation} strict>
     <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-[#f6f7fd] font-sans">
       <a href="#contenu" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-bold focus:text-royal-950">Aller au contenu</a>
@@ -43,5 +44,6 @@ export default function App() {
       <Floating />
     </div>
     </MotionConfig>
+    </LazyMotion>
   );
 }

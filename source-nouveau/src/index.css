@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Anton", "Archivo", sans-serif;
-  --font-condensed: "Barlow Condensed", "Archivo", sans-serif;
-  --font-sans: "Barlow", "Archivo", ui-sans-serif, system-ui, sans-serif;
-  --font-black: "Archivo", sans-serif;
+  --font-display: "Anton", Impact, sans-serif;
+  --font-condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
 
   --color-royal-950: #02083a;
   --color-royal-900: #05104f;
